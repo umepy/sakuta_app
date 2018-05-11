@@ -2,4 +2,4 @@
 sakuta lesson's App
 
 # TEST
-test
+initial_commit
