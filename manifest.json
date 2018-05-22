@@ -4,6 +4,11 @@
   "description": "Build an Extension!",
   "manifest_version": 2,
   "permissions": [
-          "bookmarks"
-  ]
+          "bookmarks",
+          "strage"
+  ],
+  "background": {
+      "scripts": ["test.js"],
+      "persistent": false
+  }
 }
