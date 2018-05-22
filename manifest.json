@@ -1,7 +1,7 @@
 {
-  "name": "Getting Started Example",
+  "name": "Intelligent Bookmark",
   "version": "1.0",
-  "description": "Build an Extension!",
+  "description": "利用履歴に基づいてスマートなブックマークを実現します",
   "manifest_version": 2,
   "permissions": [
           "bookmarks",
