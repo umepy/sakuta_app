@@ -1,14 +1,16 @@
 {
-  "name": "Getting Started Example",
+  "name": "Sakuta_App",
   "version": "1.0",
   "description": "Build an Extension!",
   "manifest_version": 2,
   "permissions": [
           "bookmarks",
-          "strage"
+          "background",
+          "tabs"
   ],
+  "browser_action": {},
   "background": {
-      "scripts": ["test.js"],
+      "scripts": ["controllers/startup.js"],
       "persistent": false
   }
 }
