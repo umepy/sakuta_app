@@ -1,17 +1,22 @@
 {
-  "name": "Sakuta_App",
-  "version": "1.0",
-  "description": "Build an Extension!",
-  "manifest_version": 2,
-  "permissions": [
-          "bookmarks",
-          "background",
-          "tabs"
-  ],
-  "browser_action": {},
-  "background": {
-      "scripts": ["controllers/startup.js"],
-      "persistent": false
-  },
-  "content_security_policy": " script-src 'self' 'sha256-VePmQi2Ey76e61vq8bYfhTPpa3kR3k0fkLS2r0oGWPQ='; object-src 'self'"
+    "name": "Sakuta_App",
+    "version": "1.0",
+    "description": "Build an Extension!",
+    "manifest_version": 2,
+    "permissions": [
+        "<all_urls>", //all urls: http, https, and so on
+        "bookmarks",
+        "background",
+        "storage", //file write and load. fileSystem api is not allowed in extensions.
+        "tabs"
+    ],
+    "browser_action": {},
+    "background": {
+        "scripts": [
+            "controllers/startup.js",
+            "controllers/images/capture_shot.js"
+        ],
+        "persistent": false
+    },
+    "content_security_policy": " script-src 'self' 'sha256-VePmQi2Ey76e61vq8bYfhTPpa3kR3k0fkLS2r0oGWPQ='; object-src 'self'"
 }
