@@ -8,7 +8,8 @@
         "bookmarks",
         "background",
         "storage", //file write and load. fileSystem api is not allowed in extensions.
-        "tabs"
+        "tabs",
+        "history"
     ],
     "browser_action": {},
     "background": {
