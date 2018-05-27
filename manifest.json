@@ -9,12 +9,14 @@
         "background",
         "storage", //file write and load. fileSystem api is not allowed in extensions.
         "tabs",
-        "history"
+        "history",
+        "contextMenus"
     ],
     "browser_action": {},
     "background": {
         "scripts": [
             "controllers/startup.js",
+            "controllers/right_click_menu.js",
             "controllers/images/capture_shot.js"
         ],
         "persistent": false
