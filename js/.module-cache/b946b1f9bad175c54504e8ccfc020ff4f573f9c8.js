@@ -4,17 +4,15 @@ import Menu from './component/menu.js'
 class Main extends React.Component {
   render(){
     return (
-      <div class="container-fluid" style={{height: '100%'}}>
-        <div class="row" style={{height: '100%'}}>
-          <Menu/>
-          <Timeline/>
-        </div>
-      </div>
+      React.createElement("div", {class: "container-fluid"}, 
+        React.createElement(Menu, null), 
+        React.createElement(Timeline, null)
+      )
     )
   }
 }
 
 ReactDOM.render(
-  <Main />,
+  React.createElement(Main, null),
   document.getElementById('app')
 );
