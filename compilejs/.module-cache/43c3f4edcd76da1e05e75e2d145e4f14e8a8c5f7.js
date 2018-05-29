@@ -1,3 +1,0 @@
-ReactDOM.render(
-
-  );
