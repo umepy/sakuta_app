@@ -5,8 +5,7 @@ export default class GetURLInfo extends React.Component {
         title: "",
         url: "",
         description: "",
-        image:  "",
-        favicon:""
+        image:  ""
     };
   }
 
@@ -16,13 +15,11 @@ export default class GetURLInfo extends React.Component {
     fetch(this.props.url)
     .then((response)=>response.text())
     .then(responseText => {
-      console.log($(responseText).filter("meta[property='favicon']").attr('content') ),
       this.setState({ 
         title: $(responseText).filter("meta[property='og:title']").attr('content') ,
         description:  $(responseText).filter("meta[property='og:description']").attr('content') ,
         image: $(responseText).filter("meta[property='og:image']").attr('content') ,
-        url: this.props.url,
-        favicon: $(responseText).filter("meta[property='favicon']").attr('content') 
+        url: this.props.url
       });
     });
   }
@@ -32,9 +29,7 @@ export default class GetURLInfo extends React.Component {
       React.createElement("div", {class: "webinfo-component", style: {width: '500px'}}, 
       	React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
         React.createElement("div", {class: "frontground"}, 
-					React.createElement("span", {class: "titel"}, this.state.title), 
-          React.createElement("span", {class: "description"}, this.state.description), 
-          React.createElement("span", {class: "url"}, React.createElement("a", {href: this.state.url}, this.state.url)), " "/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/
+					React.createElement("span", {class: "titel"}, this.state.title)
           )
         )
     )

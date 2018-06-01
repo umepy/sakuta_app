@@ -34,7 +34,7 @@ export default class GetURLInfo extends React.Component {
         React.createElement("div", {class: "frontground"}, 
 					React.createElement("span", {class: "titel"}, this.state.title), 
           React.createElement("span", {class: "description"}, this.state.description), 
-          React.createElement("span", {class: "url"}, React.createElement("a", {href: this.state.url}, this.state.url)), " "/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/
+          React.createElement("span", {class: "url"}, React.createElement("a", {href: this.state.url}, React.createElement("span", {class: "url-brand", style: {backgroundImage: "url(" + this.state.favicon + ")"}}), this.state.url))
           )
         )
     )

@@ -5,7 +5,8 @@ export default class GetURLInfo extends React.Component {
         title: "",
         url: "",
         description: "",
-        image:  ""
+        image:  "",
+        favicon:""
     };
   }
 
@@ -15,20 +16,27 @@ export default class GetURLInfo extends React.Component {
     fetch(this.props.url)
     .then((response)=>response.text())
     .then(responseText => {
+      console.log($(responseText).filter("meta[property='favicon']").attr('content') ),
       this.setState({ 
         title: $(responseText).filter("meta[property='og:title']").attr('content') ,
         description:  $(responseText).filter("meta[property='og:description']").attr('content') ,
         image: $(responseText).filter("meta[property='og:image']").attr('content') ,
-        url: this.props.url
+        url: this.props.url,
+        favicon: $(responseText).filter("meta[property='favicon']").attr('content') 
       });
     });
   }
 
   render(){
     return (
-      //<div class="webinfo-component" style="width: 500px;">
-        <p>{this.state.title}</p>
-       // </div>
+      <div class="webinfo-component" style={{width: '500px'}}>
+      	<span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
+        <div class="frontground">
+					<span class="titel">{this.state.title}</span>
+          <span class="description">{this.state.description}</span>
+          <span class="url"><a href={this.state.url}>{this.state.url}</a></span> {/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/}
+          </div>
+        </div>
     )
   }
 }
