@@ -26,9 +26,9 @@ export default class GetURLInfo extends React.Component {
 
   render(){
     return (
-      //<div class="webinfo-component" style="width: 500px;">
-        <p>{this.state.title}</p>
-       // </div>
+      React.createElement("div", null, 
+        React.createElement("p", null, this.state.title)
+        )
     )
   }
 }

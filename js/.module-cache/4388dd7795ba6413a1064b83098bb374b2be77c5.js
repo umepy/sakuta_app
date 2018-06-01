@@ -26,9 +26,14 @@ export default class GetURLInfo extends React.Component {
 
   render(){
     return (
-      //<div class="webinfo-component" style="width: 500px;">
-        <p>{this.state.title}</p>
-       // </div>
+      React.createElement("div", {class: "skype-rich", style: "width: 500px;"}, 
+      React.createElement("span", {class: "brand", style: "background-image:url('{this.state.url}')"}), 
+      React.createElement("div", {class: "frontground"}, 
+        React.createElement("span", {class: "titel"}, this.state.title), 
+        React.createElement("span", {class: "description"}, this.state.description)
+      )
+    )
+
     )
   }
 }
