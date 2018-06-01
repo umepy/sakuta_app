@@ -20,6 +20,7 @@ export default class GetURLInfo extends React.Component {
 
   //マウント前に呼ばれるらしい
   componentWillMount(){
+    console.log("call before")
     fetch(this.props.url)
     .then((response)=>response.text())
     .then((responseText) => {
@@ -36,16 +37,16 @@ export default class GetURLInfo extends React.Component {
 
   render(){
     return (
-      <div class="webinfo-component" style={{width: '500px'}}>
-      <a href="" onClick={e => openNewTab(e,this.props.url)} >
-      	<span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
-        <div class="frontground">
-					<span class="titel">{this.state.title}</span>
-          <span class="description">{this.state.description}</span>
-          <span class="url"><a>{this.state.url}</a></span> {/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/}
-          </div>
-          </a>
-        </div>
+      React.createElement("div", {class: "webinfo-component", style: {width: '500px'}}, 
+      React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.url)}, 
+      	React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
+        React.createElement("div", {class: "frontground"}, 
+					React.createElement("span", {class: "titel"}, this.state.title), 
+          React.createElement("span", {class: "description"}, this.state.description), 
+          React.createElement("span", {class: "url"}, React.createElement("a", null, this.state.url)), " "/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/
+          )
+          )
+        )
     )
   }
 }

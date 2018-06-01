@@ -20,15 +20,16 @@ export default class GetURLInfo extends React.Component {
 
   //マウント前に呼ばれるらしい
   componentWillMount(){
+    console.log("call before")
     fetch(this.props.url)
     .then((response)=>response.text())
     .then((responseText) => {
 
       var atitle=$(responseText).filter("meta[property='og:title']").attr('content')
       this.setState({
-        title: atitle ,
-        description:  $(responseText).filter("meta[property='og:description']").attr('content') ,
-        image: $(responseText).filter("meta[property='og:image']").attr('content') ,
+        // title: atitle ,
+        // description:  $(responseText).filter("meta[property='og:description']").attr('content') ,
+        // image: $(responseText).filter("meta[property='og:image']").attr('content') ,
         url: this.props.url
       });
     });
