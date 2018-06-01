@@ -2,7 +2,7 @@
 
 const  openNewTab =(e,url)=> {
     e.preventDefault();
-    chrome.tabs.create({url:url})
+    console.log(url,e);
 }
 
 export default class GetURLInfo extends React.Component {
@@ -23,7 +23,7 @@ export default class GetURLInfo extends React.Component {
     console.log("call before")
     fetch(this.props.url)
     .then((response)=>response.text())
-    .then((responseText) => {
+    .then(responseText => {
       this.setState({
         title: $(responseText).filter("meta[property='og:title']").attr('content') ,
         description:  $(responseText).filter("meta[property='og:description']").attr('content') ,
