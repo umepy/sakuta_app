@@ -2,7 +2,10 @@ export default class GetURLInfo extends React.Component {
   constructor(){
     super();
     this.state = {
-        data: ""
+        title: "",
+        url: "",
+        description: "",
+        image:  ""
     };
   }
 
@@ -12,13 +15,22 @@ export default class GetURLInfo extends React.Component {
     fetch(this.props.url)
     .then((response)=>response.text())
     .then(responseText => {
-      this.setState({ data:responseText });
+      this.setState({ 
+        title: $(responseText).filter("meta[property='og:title']").attr('content') ,
+        description:  $(responseText).filter("meta[property='og:description']").attr('content') ,
+        image: $(responseText).filter("meta[property='og:image']").attr('content') ,
+        url: this.props.url
+      });
     });
   }
 
   render(){
     return (
-        <p>{this.state.data}</p>
+      <div>
+        <p>{this.state.title}</p>
+        <p>{this.state.description}</p>
+        <p>{this.state.image}</p>
+      </div>
     )
   }
 }

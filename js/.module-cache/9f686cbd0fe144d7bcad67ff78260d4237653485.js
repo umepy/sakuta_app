@@ -3,7 +3,7 @@ export default class GetURLInfo extends React.Component {
     super();
     this.state = {
         title: "",
-        url: "",
+        url: this.prps.url,
         description: "",
         image:  ""
     };
@@ -18,19 +18,14 @@ export default class GetURLInfo extends React.Component {
       this.setState({ 
         title: $(responseText).filter("meta[property='og:title']").attr('content') ,
         description:  $(responseText).filter("meta[property='og:description']").attr('content') ,
-        image: $(responseText).filter("meta[property='og:image']").attr('content') ,
-        url: this.props.url
+        image: $(responseText).filter("meta[property='og:image']").attr('content') 
       });
     });
   }
 
   render(){
     return (
-      React.createElement("div", null, 
-        React.createElement("p", null, this.state.title), 
-        React.createElement("p", null, this.state.description), 
-        React.createElement("p", null, this.state.image)
-      )
+        React.createElement("p", null, this.state.data)
     )
   }
 }
