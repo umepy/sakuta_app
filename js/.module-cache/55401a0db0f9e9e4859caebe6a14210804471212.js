@@ -1,9 +1,5 @@
 import geturlinfoAsync from './functions/geturlinfo.js'
-
-const   openNewTab =(e,url)=> {
-  e.preventDefault();
-  chrome.tabs.create({url:url})
-}
+import openNewTab from './functions/openNewTab.js'
 
 export default class CreateTLWebForm extends React.Component {
   constructor(){
