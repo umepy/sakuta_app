@@ -1,5 +1,6 @@
 import geturlinfoAsync from './functions/geturlinfo.js'
 import openNewTab from './functions/openNewTab.js'
+
 export default class CreateTLWebForm extends React.Component {
   constructor(){
     super();
@@ -27,7 +28,7 @@ export default class CreateTLWebForm extends React.Component {
 
   render(){
     return (
-      <div class="webinfo-component" style={{width: '100%'}}>
+      <div id="webform" class="webinfo-component" style={{width: '100%'}}>
       <a href="" onClick={e => openNewTab(e,this.props.url)} >
       	<span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
         <div class="frontground">

@@ -19,14 +19,12 @@ export default class CreateTLMemoForm extends React.Component {
 
   render(){
     return (
-      <div class="webinfo-component" style={{width: '100%'}}>
+      <div id="memo" class="memo-component" style={{width: '100%'}}>
       {/* <a href="" onClick={e => openNewTab(e,this.props.url)} > クリックしたら編集したり窓空いたりする仕掛け欲しいTODO */}
       	<span class="brand" ></span>
-        <div class="frontground">
-					<span class="titel">{this.state.title}</span>
-          <span class="description">{this.state.description}</span>
-          <span class="url"><a>{this.state.datetime}</a></span> 
-        </div>
+        <span class="titel">{this.state.title}</span>
+        <span class="description">{this.state.description}</span>
+        <span class="url"><a>{this.state.datetime}</a></span> 
       </div>
     )
   }
