@@ -1,5 +1,5 @@
 import CreateWebForm from './CreateTLWebForm.js'
-import CreateMemoForm from './CreateTLMemoForm.js'
+import CreateMemoForm from './CreateTLMemoForm.js'
 
 export default class Timeline extends React.Component {
   render(){
