@@ -1,8 +1,6 @@
-
-
-const  openNewTab =(e,url)=> {
-    e.preventDefault();
-    chrome.tabs.create({url:url})
+const   openNewTab =(e,url)=> {
+  e.preventDefault();
+  chrome.tabs.create({url:url})
 }
 
 export default class GetURLInfo extends React.Component {
@@ -15,7 +13,6 @@ export default class GetURLInfo extends React.Component {
         image:  ""
     };
   }
-
 
 
   //マウント前に呼ばれるらしい
@@ -42,16 +39,16 @@ export default class GetURLInfo extends React.Component {
 
   render(){
     return (
-      <div class="webinfo-component" style={{width: '100%'}}>
-      <a href="" onClick={e => openNewTab(e,this.props.url)} >
-      	<span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
-        <div class="frontground">
-					<span class="titel">{this.state.title}</span>
-          <span class="description">{this.state.description}</span>
-          <span class="url"><a>{this.state.url}</a></span> {/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/}
-          </div>
-          </a>
-        </div>
+      React.createElement("div", {class: "webinfo-component", style: {width: '100%'}}, 
+      React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.url)}, 
+      	React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
+        React.createElement("div", {class: "frontground"}, 
+					React.createElement("span", {class: "titel"}, this.state.title), 
+          React.createElement("span", {class: "description"}, this.state.description), 
+          React.createElement("span", {class: "url"}, React.createElement("a", null, this.state.url)), " "/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/
+        )
+      )
+      )
     )
   }
 }

@@ -1,4 +1,4 @@
-import CreateWebForm from './CreateTLWebForm.js'
+import CreateWebForm from './GetURLInfo.js'
 
 export default class Timeline extends React.Component {
   render(){
