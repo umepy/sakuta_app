@@ -42,7 +42,7 @@ export default class GetURLInfo extends React.Component {
 
   render(){
     return (
-      <div class="webinfo-component" style={{width: '500px'}}>
+      <div class="webinfo-component" style={{width: '100%'}}>
       <a href="" onClick={e => openNewTab(e,this.props.url)} >
       	<span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
         <div class="frontground">
