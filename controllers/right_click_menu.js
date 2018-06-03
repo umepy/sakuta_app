@@ -1,8 +1,6 @@
 // 右クリックしたときのメニュー
 
 // 右クリで後で見るページを追加
-import openNewTab from "../js/component/functions/openNewTab";
-
 chrome.contextMenus.create({
     title: "後で見る",
     id:'add_see_later',
@@ -74,6 +72,3 @@ function get_seelater(){
         });
     });
 }
-
-
-export default get_seelater
