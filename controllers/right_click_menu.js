@@ -1,6 +1,8 @@
 // 右クリックしたときのメニュー
 
 // 右クリで後で見るページを追加
+import openNewTab from "../js/component/functions/openNewTab";
+
 chrome.contextMenus.create({
     title: "後で見る",
     id:'add_see_later',
@@ -22,7 +24,7 @@ chrome.contextMenus.onClicked.addListener(function (info, tab){
         // storageにseelaterがある場合
         }else {
 
-            let flag = true
+            let flag = true;
             // 重複の除外
             data.seelater.forEach(function (tabs) {
                 if (tabs.url == tab.url){
@@ -61,3 +63,17 @@ function del_seelater(url){
         }
     });
 }
+
+
+// スタック化された後で見るデータを呼ぶ関数,非同期でくそうざいのでPromise型で返す
+function get_seelater(){
+    let key = 'seelater';
+    return new Promise((resolve) => {
+        chrome.storage.local.get(key, (item) =>{
+            key ? resolve(item[key]):reject(key);
+        });
+    });
+}
+
+
+export default get_seelater
