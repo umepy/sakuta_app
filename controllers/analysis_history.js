@@ -84,7 +84,7 @@ function insertStr(str, index, insert) {
     return str.slice(0, index) + insert + str.slice(index, str.length);
 }
 
-//
+// アクセス数の多い順で並べ替えをする関数
 function manage_bookmark_by_number(){
     const hours = 168; // 168 hours:a week, 5040 hours:a month
     let query = {
@@ -121,4 +121,88 @@ function manage_bookmark_by_number(){
     });
 }
 
-manage_bookmark_by_number();
+// 過去の閲覧履歴の詳細な取得
+function get_history_detail(){
+    let time_split = 4; // 1日の分割数、デフォルトは4
+    let splited_time = 24 / time_split; // 単位時間
+    let search_limit = 5040; // 検索時間の上限、デフォルトは1月(5040)
+    let unit_time = 24 * 60 * 60 * 1000 / time_split; // 1unitの時間
+    let now_time = new Date(); // 現在時刻
+    let start_time, end_time; //検索時の範囲指定用の時刻
+    let search_limit_time = now_time.getTime() - search_limit * 60 * 60 * 1000; //検索の時間上限値
+    let history_log = {}; // historyのログが入る、keyは区分時間
+    for(i=0;i<time_split;i++){
+        history_log[i]={};
+    }
+    // 現在時刻と直近の時間帯をstart,end_timeにセット
+    end_time = now_time.getTime();
+    // 4分割は斜めにやりたいので、最初に3ひいておく
+    start_time = new Date(new Date(now_time-3 * 60 * 60 * 1000).getFullYear(), new Date(now_time-3 * 60 * 60 * 1000).getMonth(), new Date(now_time-3 * 60 * 60 * 1000).getDate(), 3 + splited_time * (Math.floor((new Date(now_time-3 * 60 * 60 * 1000).getHours())/splited_time))).getTime();
+
+    let first_query = {
+        text:'',
+        startTime:start_time,
+        endTime:end_time,
+        maxResults:100000
+    };
+    while(first_query.startTime > search_limit_time){
+        let query = {
+            text:'',
+            startTime:first_query.startTime,
+            endTime:first_query.endTime,
+            maxResults:100000
+        };
+        //現在の時刻が配列の何番目に入るか計算
+        let kubun=Math.floor(new Date(query.startTime).getHours()/splited_time);
+        while(query.startTime < query.endTime){
+            let subquery = {
+                text:'',
+                startTime:query.endTime-60 * 1000,
+                endTime:query.endTime,
+                maxResults:100000
+            };
+            get_hist(subquery).then(function catch_data(hist){
+                if(hist!={}) {
+                    for (url in hist) {
+                        if (history_log[kubun][url]) history_log[kubun][url]['visitCount'] += 1;
+                        else {
+                            history_log[kubun][url] = hist[url];
+                            history_log[kubun][url]['visitCount']=1
+                        }
+                    }
+                }
+            });
+            query.endTime-= 60 * 1000;
+        }
+        first_query.endTime=first_query.startTime;
+        first_query.startTime-= splited_time * 60 * 60 * 1000;
+    }
+    console.log(history_log)
+
+    let history = {};
+
+    // 実際の検索
+    chrome.history.search(query, function (results) {
+        results.forEach(function (result) {
+            history[result.url] = result;
+            //document.write((new Date().getTime() - result.lastVisitTime) / 1000 /60 /60)
+        });
+    });
+    return history;
+}
+
+// 同期させつつ、過去の閲覧履歴を取得する関数
+function get_hist(query){
+    return new Promise((resolve)=>{
+        chrome.history.search(query, (results) =>{
+            let history={};
+            results.forEach(function (result) {
+                history[result.url] = result;
+            });
+            resolve(history);
+        });
+    });
+}
+
+
+get_history_detail();
