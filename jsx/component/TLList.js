@@ -7,7 +7,7 @@ export default class TLList extends React.Component {
       <div class="timeline" style={{height: '100%', overflow: 'scroll',padding: '2%'}}>
         { seeList.map(see => (
           <TLItem key={see._id} see={see} />
-        ))} 
+        ))}
       </div>
     );
   }

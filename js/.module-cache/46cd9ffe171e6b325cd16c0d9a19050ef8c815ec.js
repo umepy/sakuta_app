@@ -8,7 +8,7 @@ const seeList =[
 
 const memoList=
 [
-  {_id: '201801010013', url:"メモの保存先?", type:"memo"}
+  {_id: '201801010013', context:"メモです", type:"memo"}
 ]
 
 export default class Timeline extends React.Component {
@@ -41,10 +41,10 @@ export default class Timeline extends React.Component {
     list.push(this.getMemoFromDB())
     console.log(list)
     return (
-      <div  class="col-sm-4" style={{height: '100%',padding: '1%'}}>  {/** こっちはタイムラインの外枠組みのdiv */}
-        <p>タイムライン</p>
-        <TLList seeList={list} />
-      </div>
+      React.createElement("div", {class: "col-sm-4", style: {height: '100%',padding: '1%'}}, "  ", /** こっちはタイムラインの外枠組みのdiv */
+        React.createElement("p", null, "タイムライン"), 
+        React.createElement(TLList, {seeList: list})
+      )
     )
   }
 }
