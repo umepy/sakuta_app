@@ -1,3 +1,5 @@
+import CreateWebForm from './CreateTLWebForm.js'
+import CreateMemoForm from './CreateTLMemoForm.js'
 import TLList from './TLList.js'
 
 const seeList =[
@@ -7,26 +9,27 @@ const seeList =[
 ]
 
 export default class Timeline extends React.Component {
+
   constructor(){
     super();
-  }
-
-
-  //render前に呼ばれる
-  componentWillMount()
+    this.state = {
+      list: []
+    };
+}
+   getSeeLaterFromDB()
   {
+    return new Promise(
+      function(resolve, reject) {
+      var resp=seeList
+      console.log(resp)
+      resolve(resp)
+      })
 
-  }
-
-  getseeLaterFromDB()
-  {
-    var list = seeList
-    return list
   }
 
   render(){
-
-    var list = this.getseeLaterFromDB()
+    var response =this.getSeeLaterFromDB()
+    this.setState(list=response)
     return (
       React.createElement("div", {class: "col-sm-4", style: {height: '100%',padding: '1%'}}, "  ", /** こっちはタイムラインの外枠組みのdiv */
         React.createElement("p", null, "タイムライン"), 

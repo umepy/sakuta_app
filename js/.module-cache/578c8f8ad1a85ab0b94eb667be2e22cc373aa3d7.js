@@ -1,3 +1,5 @@
+import CreateWebForm from './CreateTLWebForm.js'
+import CreateMemoForm from './CreateTLMemoForm.js'
 import TLList from './TLList.js'
 
 const seeList =[
@@ -7,30 +9,23 @@ const seeList =[
 ]
 
 export default class Timeline extends React.Component {
-  constructor(){
-    super();
-  }
 
-
-  //render前に呼ばれる
-  componentWillMount()
+   getSeeLaterFromDB()
   {
+    return new Promise(
+      function(resolve, reject) {
+      var resp={"1":"http://www.masayoung.net/archives/693","2":"https://bagelee.com/programming/react-native/api-react-native/","3":"http://www.masayoung.net/archives/693"}
+      console.log(resp)
+      resolve(resp)
+      })
 
-  }
-
-  getseeLaterFromDB()
-  {
-    var list = seeList
-    return list
   }
 
   render(){
-
-    var list = this.getseeLaterFromDB()
     return (
       React.createElement("div", {class: "col-sm-4", style: {height: '100%',padding: '1%'}}, "  ", /** こっちはタイムラインの外枠組みのdiv */
         React.createElement("p", null, "タイムライン"), 
-        React.createElement(TLList, {seeList: list})
+        React.createElement(TLList, {seeList: seeList})
       )
     )
   }
