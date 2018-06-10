@@ -16,7 +16,6 @@
     "background": {
         "scripts": [
             "controllers/startup.js",
-            "controllers/analysis_history.js",
             "controllers/right_click_menu.js",
             "controllers/images/capture_shot.js"
         ],
