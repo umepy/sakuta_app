@@ -1,19 +1,46 @@
-import CreateWebForm from './CreateTLWebForm.js'
-import CreateMemoForm from './CreateTLMemoForm.js'
+import TLList from './TLList.js'
+
+const seeList =[
+  {_id: '201801010011', url: 'http://www.masayoung.net/archives/693', type: "web"},
+  {_id: '201801020011', url: 'https://bagelee.com/programming/react-native/api-react-native/',type:"web"},
+  {_id: '201802030022', url: 'http://www.masayoung.net/archives/693',type: "web" }
+]
+
+const memoList=
+[
+  {_id: '201801010013', url:"メモの保存先?", type:"memo"}
+]
 
 export default class Timeline extends React.Component {
+  constructor(){
+    super();
+  }
+
+
+  getseeLaterFromDB()
+  {
+    var sees = seeList
+    return sees
+  }
+
+  getMemoFromDB()
+  {
+    var memos = memoList
+    return memos
+  }
+
   render(){
+    console.log(new Date())
+    var list = this.getseeLaterFromDB()
+    list.push(this.getMemoFromDB())
+    
+    //TODO: _idの小さい順に並べるとかすれば、ソートできる
+    
+
     return (
-      <div  class="col-sm-4" style={{height: '100%',padding: '1%'}}>  {/** こっちはタイムラインの枠組みのdiv */}
+      <div  class="col-sm-4" style={{height: '100%',padding: '1%'}}>  {/** こっちはタイムラインの外枠組みのdiv */}
         <p>タイムライン</p>
-        <div class="timeline" style={{height: '100%', overflow: 'scroll',padding: '2%'}} >  {/*タイムラインの中身のdiv*/}
-          <CreateWebForm  url="http://www.masayoung.net/archives/693"/>
-          <CreateWebForm  url="http://www.masayoung.net/archives/693"/>
-          <CreateMemoForm />
-          {/* <CreateWebForm url="http://rittor-music.jp/guitar/column/guitarchord/467"/>  このページを読み込むと謎のエラーがでる アクセス時に .swfファイルをダウンロードしてる？*/} 
-          <CreateWebForm url="https://bagelee.com/programming/react-native/api-react-native/"/>
-          <CreateWebForm url="https://bagelee.com/programming/react-native/api-react-native/"/>
-        </div>
+        <TLList seeList={list} />
       </div>
     )
   }

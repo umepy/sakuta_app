@@ -17,6 +17,12 @@ export default class Timeline extends React.Component {
   }
 
 
+  //render前に呼ばれる
+  componentWillMount()
+  {
+
+  }
+
   getseeLaterFromDB()
   {
     var sees = seeList
@@ -33,10 +39,7 @@ export default class Timeline extends React.Component {
     console.log(new Date())
     var list = this.getseeLaterFromDB()
     list.push(this.getMemoFromDB())
-    
-    //TODO: _idの小さい順に並べるとかすれば、ソートできる
-    
-
+    console.log(list)
     return (
       React.createElement("div", {class: "col-sm-4", style: {height: '100%',padding: '1%'}}, "  ", /** こっちはタイムラインの外枠組みのdiv */
         React.createElement("p", null, "タイムライン"), 

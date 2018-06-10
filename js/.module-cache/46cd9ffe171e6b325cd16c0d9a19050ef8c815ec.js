@@ -8,7 +8,7 @@ const seeList =[
 
 const memoList=
 [
-  {_id: '201801010013', url:"メモの保存先?", type:"memo"}
+  {_id: '201801010013', context:"メモです", type:"memo"}
 ]
 
 export default class Timeline extends React.Component {
@@ -16,6 +16,12 @@ export default class Timeline extends React.Component {
     super();
   }
 
+
+  //render前に呼ばれる
+  componentWillMount()
+  {
+
+  }
 
   getseeLaterFromDB()
   {
@@ -33,10 +39,7 @@ export default class Timeline extends React.Component {
     console.log(new Date())
     var list = this.getseeLaterFromDB()
     list.push(this.getMemoFromDB())
-    
-    //TODO: _idの小さい順に並べるとかすれば、ソートできる
-    
-
+    console.log(list)
     return (
       React.createElement("div", {class: "col-sm-4", style: {height: '100%',padding: '1%'}}, "  ", /** こっちはタイムラインの外枠組みのdiv */
         React.createElement("p", null, "タイムライン"), 
