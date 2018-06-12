@@ -14,15 +14,24 @@ const memoList=
 export default class Timeline extends React.Component {
   constructor(){
     super();
-    this.list = [];
+    this.state={
+      sees:[]
+    }
   }
+
+  componentWillMount() {
+      get_seelater().then(data => {
+          this.setState({sees: data});
+      });
+  }
+
 
   async getseeLaterFromDB()
   {
-      let sees;
-      sees = await get_seelater();
-      console.log(JSON.stringify(sees));
-      return sees;
+    let sees;
+    sees = await get_seelater();
+    console.log(JSON.stringify(sees));
+    return sees;
   }
 
   getMemoFromDB()
@@ -31,18 +40,18 @@ export default class Timeline extends React.Component {
     return memos
   }
 
-    render(){
-        this.getseeLaterFromDB().then((data)=>{
-            this.list = data;
-            console.log(JSON.stringify(data));
-            this.list = this.list.concat(this.getMemoFromDB());
-            //TODO: _idの小さい順に並べるとかすれば、ソートできる
-        });
-        return (
-            React.createElement("div", {class: "col-sm-4", style: {height: '100%',padding: '1%'}}, "  ", /** こっちはタイムラインの外枠組みのdiv */
-                React.createElement("p", null, "タイムライン"),
-                React.createElement(TLList, {seeList: this.list})
-            )
-        )
-    }
+  render(){
+    var list = this.state.sees
+    list.push(this.getMemoFromDB())
+    
+    //TODO: _idの小さい順に並べるとかすれば、ソートできる
+    
+
+    return (
+      React.createElement("div", {class: "col-sm-4", style: {height: '100%',padding: '1%'}}, "  ", /** こっちはタイムラインの外枠組みのdiv */
+        React.createElement("p", null, "タイムライン"), 
+        React.createElement(TLList, {seeList: list})
+      )
+    )
+  }
 }
