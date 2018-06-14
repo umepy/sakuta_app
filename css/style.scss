@@ -1,14 +1,3 @@
-html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-}
-
-
-div.timeline{
-    overflow-y:scroll;
-
-}
+@import "./component_styles/main.scss";
+@import "./component_styles/webinfo.scss";
+@import "./component_styles/memo.scss";

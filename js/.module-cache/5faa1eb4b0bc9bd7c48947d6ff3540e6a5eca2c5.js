@@ -1,12 +1,11 @@
 import Timeline from './component/Timeline.js'
 import Menu from './component/Menu.js'
 
-
+/* 背景の設定 */
+var bgImgPath = '../img/star.png'
 
 class Main extends React.Component {
   render(){
-    /* 背景の設定 */
-    var bgImgPath = '../img/star.png'
     let wrapperStyle = ({bgImgPath}) => ({
       backgroundImage: 'url('+ {bgImgPath} + ')',
       backgroundRepeat: 'no-repeat',
