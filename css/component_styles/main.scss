@@ -1,10 +1,22 @@
-html {
-  height: 100%;
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  height: 100vh;
 }
 
 body {
-  height: 100%;
-  margin: 0;
+  height: 100vh;
+
+  // 背景の設定
+  background-image: url(../img/star.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #000;
 }
 
 

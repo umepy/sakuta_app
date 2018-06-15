@@ -1,0 +1,52 @@
+/* --- 基本変数
+X軸はタイムラインはpx, メニューは%が基準
+Y軸はvhが基準
+*/
+
+//メニュー
+$menuTop: 5vh;
+$menuLeft: 50px;
+
+$menuSearchWindowTop: $menuTop;
+$menuSearchWindowWidth: 80%;
+
+// タイムライン
+$timeLineRight: $menuLeft;
+$timeLineTop: $menuTop;
+$timeLineWidth: 300px;
+$timeLineHeight: 80vh;
+
+$tlListWidth: 290px;
+$tlListHeight: 100%;
+
+
+// --- スタイル
+
+// メニュー
+#menu{
+  position: fixed;
+  top: $menuTop;
+  left: $menuLeft;
+  width: calc( 100vw - #{$timeLineWidth} - #{$menuLeft} * 2);
+}
+// 検索窓
+#menuSearchWindow{
+}
+
+// タイムライン
+#timeLine{
+  position: fixed;
+  right: $timeLineRight;
+  top: $timeLineTop;
+  width: $timeLineWidth;
+  height: $timeLineHeight;
+  margin: 0;
+  padding: 0;
+}
+
+#tlList{
+  width: $tlListWidth;
+  height: $tlListHeight;
+  overflow: scroll;
+  align-self: center;
+}
