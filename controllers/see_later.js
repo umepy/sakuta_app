@@ -28,7 +28,8 @@ function get_seelater(){
     let key = 'seelater';
     return new Promise((resolve) => {
         chrome.storage.local.get(key, (item) =>{
-            key ? resolve(item[key]):reject([]);
+            resolve(item[key]);
         });
+        reject([])
     });
 }
