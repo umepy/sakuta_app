@@ -15,13 +15,24 @@ const memoList=
 export default class Timeline extends React.Component {
   constructor(){
     super();
+    this.state={
+      sees:[]
+    }
+  }
+
+  componentWillMount() {
+      get_seelater().then(data => {
+          this.setState({sees: data});
+      });
   }
 
 
-  getseeLaterFromDB()
+  async getseeLaterFromDB()
   {
-    var sees = seeList
-    return sees
+    let sees;
+    sees = await get_seelater();
+    console.log(JSON.stringify(sees));
+    return sees;
   }
 
   getMemoFromDB()
@@ -31,8 +42,7 @@ export default class Timeline extends React.Component {
   }
 
   render(){
-    console.log(new Date())
-    var list = this.getseeLaterFromDB()
+    var list = this.state.sees
     list.push(this.getMemoFromDB())
 
     //TODO: _idの小さい順に並べるとかすれば、ソートできる
