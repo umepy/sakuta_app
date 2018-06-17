@@ -1,14 +1,12 @@
-import Timeline from './component/timeline.js'
-import Menu from './component/menu.js'
+import Timeline from './component/Timeline.js'
+import Menu from './component/Menu.js'
 
 class Main extends React.Component {
   render(){
     return (
-      <div class="container-fluid" style={{height: '100%'}}>
-        <div class="row" style={{height: '100%'}}>
-          <Menu/>
-          <Timeline/>
-        </div>
+      <div class="container-fluid">
+        <Menu/>
+        <Timeline/>
       </div>
     )
   }

@@ -1,11 +1,167 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
 html {
-  height: 100%; }
+  height: 100vh; }
 
 body {
-  height: 100%;
-  margin: 0; }
+  height: 100vh;
+  background-image: url(../img/star.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #000; }
 
 div.timeline {
   overflow-y: scroll; }
+
+/* --- 基本変数
+X軸はタイムラインはpx, メニューは%が基準
+Y軸はvhが基準
+*/
+#menu {
+  position: fixed;
+  top: 5vh;
+  left: 2.5vw;
+  width: calc( 100vw - 40vw - 2.5vw * 2 - 2.5vw); }
+
+#searchWindow {
+  margin: auto;
+  padding-top: 10vh;
+  height: 20vh; }
+
+#timeLine {
+  position: fixed;
+  right: 2.5vw;
+  top: 5vh;
+  width: 40vw;
+  height: 90vh;
+  margin: 0;
+  padding: 0; }
+
+#tlList {
+  margin: auto;
+  width: 38vw;
+  height: 100%;
+  overflow-y: scroll; }
+
+.webinfo-component {
+  border-radius: 5px;
+  height: auto;
+  display: inline-block;
+  font-size: 18px;
+  position: relative;
+  margin-bottom: 40px; }
+  .webinfo-component .brand {
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    z-index: 1; }
+  .webinfo-component .frontground {
+    background: -moz-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
+    background: -webkit-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(to bottom, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#331db0ed',endColorstr='#66000000',GradientType=0);
+    height: auto;
+    display: inline-block;
+    border-radius: 5px;
+    width: 100%;
+    position: relative;
+    z-index: 10; }
+  .webinfo-component .titel {
+    z-index: 2;
+    position: relative;
+    padding-top: 15%;
+    color: #FFF;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block; }
+  .webinfo-component .description {
+    display: block;
+    z-index: 2;
+    position: relative;
+    color: #FFF;
+    margin: 0 10px 10px; }
+  .webinfo-component .url {
+    display: block;
+    z-index: 2;
+    position: relative; }
+    .webinfo-component .url a {
+      color: #FFF !important;
+      text-decoration: none !important;
+      font-size: 12px;
+      color: #EEE; }
+  .webinfo-component .url-brand {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin: 4px 10px 0; }
+
+@media (max-width: 768px) {
+  .webinfo-component {
+    width: 250px !important; } }
+.memo-component {
+  border: 1px solid #EFEFEF;
+  border-radius: 10px;
+  background: #EFEFEF;
+  width: 500px;
+  height: 140px;
+  font-size: 18px;
+  padding: 15px;
+  position: relative;
+  margin-bottom: 40px; }
+  .memo-component .brand {
+    float: left;
+    width: 140px;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 15px; }
+  .memo-component .titel {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #292f33; }
+  .memo-component .description {
+    color: #292f33;
+    display: block;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 5px; }
+
+@media (max-width: 768px) {
+  .twitter-rich {
+    width: 100%;
+    font-size: 12px;
+    height: 100px; } }
+@media (max-width: 768px) {
+  .twitter-rich .brand {
+    width: 100px;
+    height: 100px; } }
+@media (max-width: 768px) {
+  .twitter-rich .titel {
+    margin-bottom: 5px; } }
+@media (max-width: 768px) {
+  .twitter-rich .twitter_creator {
+    margin-bottom: 5px; } }
+@media (max-width: 768px) {
+  .twitter-rich .description {
+    font-size: 12px;
+    line-height: 14px; } }
+.panel-container {
+  background-color: rgba(255, 255, 255, 0.33);
+  width: 100%;
+  height: 100%; }
 
 /*# sourceMappingURL=style.css.map */

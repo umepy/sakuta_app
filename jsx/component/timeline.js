@@ -1,4 +1,5 @@
 import TLList from './TLList.js'
+import PanelContainer from './PanelContainer.js'
 
 const seeList =[
   {_id: '201801010011', url: 'http://www.masayoung.net/archives/693', type: "web"},
@@ -43,14 +44,16 @@ export default class Timeline extends React.Component {
   render(){
     var list = this.state.sees
     list.push(this.getMemoFromDB())
-    
+
     //TODO: _idの小さい順に並べるとかすれば、ソートできる
-    
+
 
     return (
-      <div  class="col-sm-4" style={{height: '100%',padding: '1%'}}>  {/** こっちはタイムラインの外枠組みのdiv */}
-        <p>タイムライン</p>
-        <TLList seeList={list} />
+      <div id="timeLine">  {/** こっちはタイムラインの外枠組みのdiv */}
+        <PanelContainer>
+          {/* ここにコメントを入れるためのフォーム */}
+          <TLList seeList={list} />
+        </PanelContainer>
       </div>
     )
   }

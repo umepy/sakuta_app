@@ -48,12 +48,12 @@ export default class TLItem extends React.Component {
             memo.description= "来週のサザエさんきになる"
             memo.datetime="2018-01-01"
             return (
-                <div id="memo" class="memo-component" style={{width: '100%'}}>
+                <div class="memo-component" style={{width: '100%'}}>
                 {/* <a href="" onClick={e => openNewTab(e,this.props.url)} > クリックしたら編集したり窓空いたりする仕掛け欲しいTODO */}
                     <span class="brand" ></span>
                     <span class="titel">{memo.title}</span>
                     <span class="description">{memo.description}</span>
-                    <span class="url"><a>{memo.datetime}</a></span> 
+                    <span class="url"><a>{memo.datetime}</a></span>
                 </div>
             )
         }

@@ -1,14 +1,8 @@
-html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-}
-
-
-div.timeline{
-    overflow-y:scroll;
-
-}
+// 全般(*, html. body)
+@import "./component_styles/main.scss";
+// コンポーネントの配置
+@import "./component_styles/arrangement.scss";
+// コンポーネント
+@import "./component_styles/webinfo.scss";
+@import "./component_styles/memo.scss";
+@import "./component_styles/panel_container.scss";
