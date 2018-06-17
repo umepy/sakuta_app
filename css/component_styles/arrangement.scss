@@ -5,18 +5,20 @@ Y軸はvhが基準
 
 //メニュー
 $menuTop: 5vh;
-$menuLeft: 50px;
+$menuLeft: 2.5vw;
+$menuRightMargin: 2.5vw;
 
 $menuSearchWindowTop: $menuTop;
 $menuSearchWindowWidth: 80%;
+$searchWindowHeight: 20vh;
 
 // タイムライン
 $timeLineRight: $menuLeft;
 $timeLineTop: $menuTop;
-$timeLineWidth: 300px;
-$timeLineHeight: 80vh;
+$timeLineWidth: 40vw;
+$timeLineHeight: 100vh - 2 * $menuTop;
 
-$tlListWidth: 290px;
+$tlListWidth: $timeLineWidth - 2;
 $tlListHeight: 100%;
 
 
@@ -27,10 +29,13 @@ $tlListHeight: 100%;
   position: fixed;
   top: $menuTop;
   left: $menuLeft;
-  width: calc( 100vw - #{$timeLineWidth} - #{$menuLeft} * 2);
+  width: calc( 100vw - #{$timeLineWidth} - #{$menuLeft} * 2 - #{$menuRightMargin});
 }
 // 検索窓
-#menuSearchWindow{
+#searchWindow{
+  margin: auto;
+  padding-top: ($searchWindowHeight / 2);
+  height: $searchWindowHeight;
 }
 
 // タイムライン
@@ -45,8 +50,8 @@ $tlListHeight: 100%;
 }
 
 #tlList{
+  margin: auto;
   width: $tlListWidth;
   height: $tlListHeight;
-  overflow: scroll;
-  align-self: center;
+  overflow-y: scroll;
 }

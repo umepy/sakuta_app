@@ -25,23 +25,28 @@ Y軸はvhが基準
 #menu {
   position: fixed;
   top: 5vh;
-  left: 50px;
-  width: calc( 100vw - 300px - 50px * 2); }
+  left: 2.5vw;
+  width: calc( 100vw - 40vw - 2.5vw * 2 - 2.5vw); }
+
+#searchWindow {
+  margin: auto;
+  padding-top: 10vh;
+  height: 20vh; }
 
 #timeLine {
   position: fixed;
-  right: 50px;
+  right: 2.5vw;
   top: 5vh;
-  width: 300px;
-  height: 80vh;
+  width: 40vw;
+  height: 90vh;
   margin: 0;
   padding: 0; }
 
 #tlList {
-  width: 290px;
+  margin: auto;
+  width: 38vw;
   height: 100%;
-  overflow: scroll;
-  align-self: center; }
+  overflow-y: scroll; }
 
 .webinfo-component {
   border-radius: 5px;
@@ -155,6 +160,8 @@ Y軸はvhが基準
     font-size: 12px;
     line-height: 14px; } }
 .panel-container {
-  background-color: rgba(255, 255, 255, 0.33); }
+  background-color: rgba(255, 255, 255, 0.33);
+  width: 100%;
+  height: 100%; }
 
 /*# sourceMappingURL=style.css.map */
