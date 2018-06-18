@@ -8,19 +8,16 @@ export default class TLItem extends React.Component {
             title: "",
             url: "",
             description: "",
-            image:""
+            image:"",
+            datetime:""
         };
     }
 
     componentWillMount(){
-
-    }
-
-    render(){
+        console.log(this.props.see.type)
         if(this.props.see.type=="web"){
             geturlinfoAsync(this.props.see.url)
             .then((resp)=>{
-                console.log(resp);
                 this.setState({
                 title: resp.title,
                 description:  resp.description,
@@ -28,6 +25,20 @@ export default class TLItem extends React.Component {
                 url: this.props.see.url
                 });
             })
+         } else if(this.props.see.type=="memo")
+            {
+                
+                this.setState({
+                    title:"メモだお",
+                    description: "来週のサザエさんきになる",
+                    datetime:"2018-01-01"
+                    });
+            }
+    }
+
+
+    render(){
+        if(this.props.see.type=="web"){
             return (
                 <div id="TL-item" class="webinfo-component" style={{width: '100%'}}>
                 <a href="" onClick={e => openNewTab(e,this.props.see.url)} >
@@ -41,21 +52,23 @@ export default class TLItem extends React.Component {
                 </div>
             )
         }
-        else
-        {
-            var memo= new Object()
-            memo.title= "メモだお"
-            memo.description= "来週のサザエさんきになる"
-            memo.datetime="2018-01-01"
+       else if (this.props.see.type=="memo"){
             return (
                 <div class="memo-component" style={{width: '100%'}}>
                 {/* <a href="" onClick={e => openNewTab(e,this.props.url)} > クリックしたら編集したり窓空いたりする仕掛け欲しいTODO */}
                     <span class="brand" ></span>
-                    <span class="titel">{memo.title}</span>
-                    <span class="description">{memo.description}</span>
-                    <span class="url"><a>{memo.datetime}</a></span>
+                    <span class="titel">{this.state.title}</span>
+                    <span class="description">{this.state.description}</span>
+                    <span class="url"><a>{this.state.datetime}</a></span>
                 </div>
             )
+        }
+        else //何かが必ずreturnする形にしなければエラーになる
+        {
+            return(
+                <div> </div>
+            )
+            console.log("error: type is nothing"+ this.props.see.type)
         }
     }
 }

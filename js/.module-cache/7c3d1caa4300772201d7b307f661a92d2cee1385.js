@@ -14,7 +14,6 @@ export default class TLItem extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props.see.type)
         if(this.props.see.type=="web"){
             geturlinfoAsync(this.props.see.url)
             .then((resp)=>{
@@ -27,7 +26,6 @@ export default class TLItem extends React.Component {
             })
          } else if(this.props.see.type=="memo")
             {
-                
                 this.setState({
                     title:"メモだお",
                     description: "来週のサザエさんきになる",
@@ -63,12 +61,9 @@ export default class TLItem extends React.Component {
                 )
             )
         }
-        else //何かが必ずreturnする形にしなければエラーになる
+        else
         {
-            return(
-                React.createElement("div", null, " ")
-            )
-            console.log("error: type is nothing"+ this.props.see.type)
+            cossole.log("error: type is nothing"+ this.props.see.type)
         }
     }
 }
