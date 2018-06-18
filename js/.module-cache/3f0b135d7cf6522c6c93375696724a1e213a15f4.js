@@ -14,7 +14,6 @@ export default class TLItem extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props.see.type)
         if(this.props.see.type=="web"){
             geturlinfoAsync(this.props.see.url)
             .then((resp)=>{
@@ -27,7 +26,6 @@ export default class TLItem extends React.Component {
             })
          } else if(this.props.see.type=="memo")
             {
-                
                 this.setState({
                     title:"メモだお",
                     description: "来週のサザエさんきになる",
@@ -52,7 +50,7 @@ export default class TLItem extends React.Component {
                 )
             )
         }
-       else if (this.props.see.type=="memo"){
+       else if (this.props.type=="memo"){
             return (
                 React.createElement("div", {class: "memo-component", style: {width: '100%'}}, 
                 /* <a href="" onClick={e => openNewTab(e,this.props.url)} > クリックしたら編集したり窓空いたりする仕掛け欲しいTODO */
@@ -62,13 +60,6 @@ export default class TLItem extends React.Component {
                     React.createElement("span", {class: "url"}, React.createElement("a", null, this.state.datetime))
                 )
             )
-        }
-        else //何かが必ずreturnする形にしなければエラーになる
-        {
-            return(
-                React.createElement("div", null, " ")
-            )
-            console.log("error: type is nothing"+ this.props.see.type)
         }
     }
 }

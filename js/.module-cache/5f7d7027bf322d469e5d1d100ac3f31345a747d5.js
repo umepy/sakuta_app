@@ -8,16 +8,20 @@ export default class TLItem extends React.Component {
             title: "",
             url: "",
             description: "",
-            image:"",
-            datetime:""
+            image:""
         };
     }
 
     componentWillMount(){
-        console.log(this.props.see.type)
-        if(this.props.see.type=="web"){
+
+    }
+
+    render(){
+        let type = this.props.see.type
+        if(type=="web"){
             geturlinfoAsync(this.props.see.url)
             .then((resp)=>{
+                console.log(resp);
                 this.setState({
                 title: resp.title,
                 description:  resp.description,
@@ -25,20 +29,6 @@ export default class TLItem extends React.Component {
                 url: this.props.see.url
                 });
             })
-         } else if(this.props.see.type=="memo")
-            {
-                
-                this.setState({
-                    title:"メモだお",
-                    description: "来週のサザエさんきになる",
-                    datetime:"2018-01-01"
-                    });
-            }
-    }
-
-
-    render(){
-        if(this.props.see.type=="web"){
             return (
                 React.createElement("div", {id: "TL-item", class: "webinfo-component", style: {width: '100%'}}, 
                 React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
@@ -52,23 +42,21 @@ export default class TLItem extends React.Component {
                 )
             )
         }
-       else if (this.props.see.type=="memo"){
+        else if(type=="memo")
+        {
+            var memo= new Object()
+            memo.title= "メモだお"
+            memo.description= "来週のサザエさんきになる"
+            memo.datetime="2018-01-01"
             return (
                 React.createElement("div", {class: "memo-component", style: {width: '100%'}}, 
                 /* <a href="" onClick={e => openNewTab(e,this.props.url)} > クリックしたら編集したり窓空いたりする仕掛け欲しいTODO */
                     React.createElement("span", {class: "brand"}), 
-                    React.createElement("span", {class: "titel"}, this.state.title), 
-                    React.createElement("span", {class: "description"}, this.state.description), 
-                    React.createElement("span", {class: "url"}, React.createElement("a", null, this.state.datetime))
+                    React.createElement("span", {class: "titel"}, memo.title), 
+                    React.createElement("span", {class: "description"}, memo.description), 
+                    React.createElement("span", {class: "url"}, React.createElement("a", null, memo.datetime))
                 )
             )
-        }
-        else //何かが必ずreturnする形にしなければエラーになる
-        {
-            return(
-                React.createElement("div", null, " ")
-            )
-            console.log("error: type is nothing"+ this.props.see.type)
         }
     }
 }

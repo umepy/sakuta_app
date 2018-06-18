@@ -50,7 +50,7 @@ export default class Timeline extends React.Component {
 
   render(){
     var list = this.state.sees
-    //list.push(this.state.memos)
+    list.push(this.state.memos)
 
     //TODO: _idの小さい順に並べるとかすれば、ソートできる
 

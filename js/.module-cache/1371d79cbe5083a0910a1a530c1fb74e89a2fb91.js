@@ -14,7 +14,6 @@ export default class TLItem extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props.see.type)
         if(this.props.see.type=="web"){
             geturlinfoAsync(this.props.see.url)
             .then((resp)=>{
@@ -27,7 +26,7 @@ export default class TLItem extends React.Component {
             })
          } else if(this.props.see.type=="memo")
             {
-                
+                console.log("memo")
                 this.setState({
                     title:"メモだお",
                     description: "来週のサザエさんきになる",
