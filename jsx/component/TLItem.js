@@ -27,7 +27,7 @@ export default class TLItem extends React.Component {
             })
          } else if(this.props.see.type=="memo")
             {
-                
+
                 this.setState({
                     title:"メモだお",
                     description: "来週のサザエさんきになる",
@@ -44,7 +44,7 @@ export default class TLItem extends React.Component {
                 <a href="" onClick={e => openNewTab(e,this.props.see.url)} >
                     <span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
                 <div class="frontground">
-                            <span class="titel">{this.state.title}</span>
+                            <span class="title">{this.state.title}</span>
                     <span class="description">{this.state.description}</span>
                     <span class="url"><a>{this.state.url}</a></span> {/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/}
                 </div>
@@ -57,7 +57,7 @@ export default class TLItem extends React.Component {
                 <div class="memo-component" style={{width: '100%'}}>
                 {/* <a href="" onClick={e => openNewTab(e,this.props.url)} > クリックしたら編集したり窓空いたりする仕掛け欲しいTODO */}
                     <span class="brand" ></span>
-                    <span class="titel">{this.state.title}</span>
+                    <span class="title">{this.state.title}</span>
                     <span class="description">{this.state.description}</span>
                     <span class="url"><a>{this.state.datetime}</a></span>
                 </div>

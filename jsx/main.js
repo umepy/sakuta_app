@@ -1,5 +1,5 @@
-import Timeline from './component/Timeline.js'
-import Menu from './component/Menu.js'
+import Timeline from './component/timeline.js'
+import Menu from './component/menu.js'
 
 class Main extends React.Component {
   render(){
