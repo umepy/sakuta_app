@@ -33,6 +33,10 @@ Y軸はvhが基準
   padding-top: 10vh;
   height: 20vh; }
 
+#favList {
+  display: block;
+  flex-wrap: wrap; }
+
 #timeLine {
   position: fixed;
   right: 2.5vw;
@@ -163,5 +167,68 @@ Y軸はvhが基準
   background-color: rgba(255, 255, 255, 0.33);
   width: 100%;
   height: 100%; }
+
+.fav-component {
+  border-radius: 5px;
+  width: 30%;
+  display: inline-block;
+  font-size: 12px;
+  position: relative;
+  margin: 10px; }
+  .fav-component .brand {
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    z-index: 1; }
+  .fav-component .frontground {
+    background: -moz-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
+    background: -webkit-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(to bottom, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#331db0ed',endColorstr='#66000000',GradientType=0);
+    height: auto;
+    display: inline-block;
+    border-radius: 5px;
+    width: 100%;
+    position: relative;
+    z-index: 10; }
+  .fav-component .titel {
+    z-index: 2;
+    position: relative;
+    padding-top: 15%;
+    color: #FFF;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block; }
+  .fav-component .description {
+    display: block;
+    z-index: 2;
+    position: relative;
+    color: #FFF;
+    margin: 0 10px 10px; }
+  .fav-component .url {
+    display: block;
+    z-index: 2;
+    position: relative; }
+    .fav-component .url a {
+      color: #FFF !important;
+      text-decoration: none !important;
+      font-size: 10px;
+      color: #EEE; }
+  .fav-component .url-brand {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin: 4px 10px 0; }
+
+@media (max-width: 768px) {
+  .fav-component {
+    width: 250px !important; } }
 
 /*# sourceMappingURL=style.css.map */
