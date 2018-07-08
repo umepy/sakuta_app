@@ -1,4 +1,3 @@
-@charset "utf-8";
 /* --- 基本変数
 X軸はタイムラインはpx, メニューは%が基準
 Y軸はvhが基準
@@ -31,18 +30,12 @@ $tlListHeight: 100%;
   top: $menuTop;
   left: $menuLeft;
   width: calc( 100vw - #{$timeLineWidth} - #{$menuLeft} * 2 - #{$menuRightMargin});
-
 }
 // 検索窓
 #searchWindow{
   margin: auto;
   padding-top: ($searchWindowHeight / 2);
   height: $searchWindowHeight;
-}
-// お気に入りリスト
-#favList{
-  display: block;
-  flex-wrap: wrap;
 }
 
 // タイムライン
