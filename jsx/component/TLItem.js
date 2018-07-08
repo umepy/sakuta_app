@@ -41,7 +41,6 @@ export default class TLItem extends React.Component {
         if(this.props.see.type=="web"){
             return (
                 <div id="TL-item" class="webinfo-component" style={{width: '100%'}}>
-                
                 <a href="" onClick={e => openNewTab(e,this.props.see.url)} >
                     <span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
                 <div class="frontground">
