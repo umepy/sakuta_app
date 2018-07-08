@@ -12,6 +12,8 @@
   position: relative;
   list-style: none;
   padding: 6px 12px;
+  background: #aaa;
+  border-radius: 5px 5px 0 0;
   cursor: pointer;
 }
 
@@ -23,7 +25,7 @@
 }
 
 .react-tabs__tab--disabled {
-  color: GrayText;
+  color: GrayText; 
   cursor: default;
 }
 

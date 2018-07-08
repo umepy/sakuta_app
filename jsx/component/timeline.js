@@ -1,5 +1,5 @@
 import TLList from './TLList.js'
-import PanelContainer from './PanelContainer.js'
+import TLContainer from './TLContainer.js'
 const { Tabs, TabList, Tab, TabPanel } = ReactTabs;
 
 const seeList =[
@@ -61,16 +61,18 @@ export default class Timeline extends React.Component {
 
       <Tabs>
             <TabList>
-              <Tab>A</Tab>
-              <Tab>B</Tab>
+              <Tab>後で見る</Tab>
+              <Tab>メモ</Tab>
             </TabList>
             <TabPanel>
-              
-              <PanelContainer>
+              <TLContainer>
                 <TLList seeList={list} />
-              </PanelContainer>
+              </TLContainer>
             </TabPanel>
-            <TabPanel>This is the content for tab B</TabPanel>
+            <TabPanel>
+            <TLContainer>
+              </TLContainer>
+            </TabPanel>
           </Tabs>
         { /*<PanelContainer>
           {/* ここにコメントを入れるためのフォーム */}

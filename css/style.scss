@@ -1,3 +1,4 @@
+@charset "utf-8";
 // 全般(*, html. body)
 @import "./component_styles/main.scss";
 // コンポーネントの配置
@@ -6,4 +7,5 @@
 @import "./component_styles/webinfo.scss";
 @import "./component_styles/memo.scss";
 @import "./component_styles/panel_container.scss";
-@import "./component_styles/react-tabs.scss"
+@import "./component_styles/react-tabs.scss";
+@import "./component_styles/favitem.scss";
