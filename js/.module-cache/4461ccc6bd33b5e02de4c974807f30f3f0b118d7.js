@@ -41,7 +41,8 @@ export default class TLItem extends React.Component {
         if(this.props.see.type=="web"){
             return (
                 React.createElement("div", {id: "TL-item", class: "webinfo-component", style: {width: '100%'}}, 
-                
+                                React.createElement("br", null), 
+                React.createElement("br", null), 
                 React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
                     React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
                 React.createElement("div", {class: "frontground"}, 
