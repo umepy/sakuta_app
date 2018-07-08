@@ -18,6 +18,9 @@ body {
 div.timeline {
   overflow-y: scroll; }
 
+div.panel-container {
+  overflow-y: scroll; }
+
 /* --- 基本変数
 X軸はタイムラインはpx, メニューは%が基準
 Y軸はvhが基準
@@ -163,5 +166,50 @@ Y軸はvhが基準
   background-color: rgba(255, 255, 255, 0.33);
   width: 100%;
   height: 100%; }
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid #aaa;
+  margin: 0 0 10px;
+  padding: 0; }
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer; }
+
+.react-tabs__tab--selected {
+  background: #fff;
+  border-color: #aaa;
+  color: black;
+  border-radius: 5px 5px 0 0; }
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default; }
+
+.react-tabs__tab:focus {
+  box-shadow: 0 0 5px #0188fe;
+  border-color: #0188fe;
+  outline: none; }
+
+.react-tabs__tab:focus:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff; }
+
+.react-tabs__tab-panel {
+  display: none; }
+
+.react-tabs__tab-panel--selected {
+  display: block; }
 
 /*# sourceMappingURL=style.css.map */
