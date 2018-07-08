@@ -30,6 +30,10 @@ Y軸はvhが基準
   padding-top: 10vh;
   height: 20vh; }
 
+#favList {
+  display: block;
+  flex-wrap: wrap; }
+
 #timeLine {
   position: fixed;
   right: 2.5vw;
@@ -173,7 +177,6 @@ Y軸はvhが基準
 
 .react-tabs__tab {
   display: inline-block;
-  width: auto;
   border: 1px solid transparent;
   border-bottom: none;
   bottom: -1px;

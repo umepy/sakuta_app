@@ -11,7 +11,7 @@ export default class Menu extends React.Component {
   		      React.createElement(SearchWindow, null)
           )
         ), 
-        React.createElement("div", {id: "menuFavList"}, 
+        React.createElement("div", null, 
           React.createElement(PanelContainer, null, 
   		      React.createElement(FavList, null)
           )
