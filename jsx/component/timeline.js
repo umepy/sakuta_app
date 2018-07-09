@@ -1,5 +1,6 @@
 import TLList from './TLList.js'
-import PanelContainer from './PanelContainer.js'
+import TLContainer from './TLContainer.js'
+const { Tabs, TabList, Tab, TabPanel } = ReactTabs;
 
 const seeList =[
   {_id: '201801010011', url: 'http://www.masayoung.net/archives/693', type: "web"},
@@ -57,11 +58,28 @@ export default class Timeline extends React.Component {
 
     return (
       <div id="timeLine">  {/** こっちはタイムラインの外枠組みのdiv */}
-        <PanelContainer>
+
+      <Tabs>
+            <TabList>
+              <Tab>後で見る</Tab>
+              <Tab>メモ</Tab>
+            </TabList>
+            <TabPanel>
+              <TLContainer>
+                <TLList seeList={list} />
+              </TLContainer>
+            </TabPanel>
+            <TabPanel>
+            <TLContainer>
+              </TLContainer>
+            </TabPanel>
+          </Tabs>
+        { /*<PanelContainer>
           {/* ここにコメントを入れるためのフォーム */}
-          <TLList seeList={list} />
-        </PanelContainer>
+          {/*<TLList seeList={list} />
+        </PanelContainer>*/}
       </div>
     )
   }
 }
+
