@@ -27,8 +27,7 @@ export default class SearchWindow extends React.Component {
   render() {
     return (
       React.createElement("div", {id: "searchWindow", align: "center"}, 
-    		React.createElement("input", {type: "search", placeholder: "検索", onKeyDown: e=>{if(e.key=='Enter')this.send()}, value: this.state.value, onChange: this.handleInput, size: "50"}), 
-    		React.createElement("div", null, this.state.word)
+    		React.createElement("input", {type: "search", placeholder: "検索", onKeyDown: e=>{if(e.key=='Enter') window.location.href = 'https://www.google.co.jp/search?q='+this.state.value}, value: this.state.value, onChange: this.handleInput, size: "50"})
       )
     );
   }

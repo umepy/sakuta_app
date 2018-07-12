@@ -27,8 +27,7 @@ export default class SearchWindow extends React.Component {
   render() {
     return (
       <div id="searchWindow" align="center">
-    		<input type="search" placeholder="検索" onKeyDown={e=>{if(e.key=='Enter')this.send()}} value={this.state.value} onChange={this.handleInput} size="50" />
-    		<div>{this.state.word}</div>
+    		<input type="search" placeholder="検索" onKeyDown={e=>{if(e.key=='Enter') window.location.href = 'https://www.google.co.jp/search?q='+this.state.value}} value={this.state.value} onChange={this.handleInput} size="50" />
       </div>
     );
   }
