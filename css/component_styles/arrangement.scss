@@ -50,25 +50,24 @@ $tlListHeight: 100%;
   position: fixed;
   right: $timeLineRight;
   top: $timeLineTop;
-  width: $timeLineWidth;
-  margin: 0;
-  padding: 1;
+  width:$timeLineWidth;
 }
 
 #tl-container{
   position: fixed;
   width: $timeLineWidth;
-  height: $timeLineHeight;
-  margin: 0;
-  padding: 0;
-  overflow-y:scroll
+  height: 60%;
+  overflow-y:scroll;
+  //background-color: rgba(255, 255, 255, 0.33);
 }
 
 #tlList{
-  margin: auto;
   width: $tlListWidth;
-  height: $tlListHeight;
+  padding-left:4%;
+  padding-right:4%;
+  height: 100%;//$tlListHeight;
   overflow-y: scroll;
+  margin: 0 auto;
   display: block;
   flex-wrap: wrap;
 }

@@ -41,23 +41,21 @@ Y軸はvhが基準
   position: fixed;
   right: 2.5vw;
   top: 30vh;
-  width: 50vw;
-  margin: 0;
-  padding: 1; }
+  width: 50vw; }
 
 #tl-container {
   position: fixed;
   width: 50vw;
-  height: 90vh;
-  margin: 0;
-  padding: 0;
+  height: 60%;
   overflow-y: scroll; }
 
 #tlList {
-  margin: auto;
   width: 48vw;
+  padding-left: 4%;
+  padding-right: 4%;
   height: 100%;
   overflow-y: scroll;
+  margin: 0 auto;
   display: block;
   flex-wrap: wrap; }
 
