@@ -89,7 +89,7 @@ Y軸はvhが基準
     position: relative;
     z-index: 10; }
     .webinfo-component .frontground .title {
-      z-index: 0;
+      z-index: 2;
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
@@ -100,7 +100,8 @@ Y軸はvhが基準
       font-weight: bold;
       padding-left: 10px;
       padding-right: 10px;
-      display: block; }
+      display: block;
+      text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000; }
   .webinfo-component .url-brand {
     background-position: center center;
     background-repeat: no-repeat;
