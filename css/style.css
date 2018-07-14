@@ -42,9 +42,8 @@ Y軸はvhが基準
   right: 2.5vw;
   top: 30vh;
   width: 50vw;
-  height: 90vh;
   margin: 0;
-  padding: 0; }
+  padding: 1; }
 
 #tl-container {
   position: fixed;
@@ -64,8 +63,10 @@ Y軸はvhが基準
 
 .webinfo-component {
   border-radius: 5px;
-  width: 30%;
+  width: 182px;
+  height: 128px;
   display: inline-block;
+  vertical-align: middle;
   font-size: 12px;
   position: relative;
   margin: 10px; }
@@ -82,10 +83,10 @@ Y軸はvhが基準
     background: -webkit-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
     background: linear-gradient(to bottom, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#331db0ed',endColorstr='#66000000',GradientType=0);
-    height: auto;
     display: inline-block;
     border-radius: 5px;
     width: 100%;
+    height: 100%;
     position: relative;
     z-index: 10; }
   .webinfo-component .titel {
@@ -97,21 +98,6 @@ Y軸はvhが基準
     padding-left: 10px;
     padding-right: 10px;
     display: block; }
-  .webinfo-component .description {
-    display: block;
-    z-index: 2;
-    position: relative;
-    color: #FFF;
-    margin: 0 10px 10px; }
-  .webinfo-component .url {
-    display: block;
-    z-index: 2;
-    position: relative; }
-    .webinfo-component .url a {
-      color: #FFF !important;
-      text-decoration: none !important;
-      font-size: 10px;
-      color: #EEE; }
   .webinfo-component .url-brand {
     background-position: center center;
     background-repeat: no-repeat;
