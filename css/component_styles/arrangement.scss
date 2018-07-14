@@ -15,8 +15,8 @@ $searchWindowHeight: 20vh;
 
 // タイムライン
 $timeLineRight: $menuLeft;
-$timeLineTop: $menuTop;
-$timeLineWidth: 40vw;
+$timeLineTop: 30vh;
+$timeLineWidth: 50vw;
 $timeLineHeight: 100vh - 2 * $menuTop;
 
 $tlListWidth: $timeLineWidth - 2;
@@ -70,4 +70,6 @@ $tlListHeight: 100%;
   width: $tlListWidth;
   height: $tlListHeight;
   overflow-y: scroll;
+  display: block;
+  flex-wrap: wrap;
 }

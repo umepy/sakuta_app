@@ -26,7 +26,7 @@ Y軸はvhが基準
   position: fixed;
   top: 5vh;
   left: 2.5vw;
-  width: calc( 100vw - 40vw - 2.5vw * 2 - 2.5vw); }
+  width: calc( 100vw - 50vw - 2.5vw * 2 - 2.5vw); }
 
 #searchWindow {
   margin: auto;
@@ -40,15 +40,15 @@ Y軸はvhが基準
 #timeLine {
   position: fixed;
   right: 2.5vw;
-  top: 5vh;
-  width: 40vw;
+  top: 30vh;
+  width: 50vw;
   height: 90vh;
   margin: 0;
   padding: 0; }
 
 #tl-container {
   position: fixed;
-  width: 40vw;
+  width: 50vw;
   height: 90vh;
   margin: 0;
   padding: 0;
@@ -56,17 +56,19 @@ Y軸はvhが基準
 
 #tlList {
   margin: auto;
-  width: 38vw;
+  width: 48vw;
   height: 100%;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  display: block;
+  flex-wrap: wrap; }
 
 .webinfo-component {
   border-radius: 5px;
-  height: auto;
+  width: 30%;
   display: inline-block;
-  font-size: 18px;
+  font-size: 12px;
   position: relative;
-  margin-bottom: 40px; }
+  margin: 10px; }
   .webinfo-component .brand {
     width: 100%;
     height: 100%;
@@ -108,7 +110,7 @@ Y軸はvhが基準
     .webinfo-component .url a {
       color: #FFF !important;
       text-decoration: none !important;
-      font-size: 12px;
+      font-size: 10px;
       color: #EEE; }
   .webinfo-component .url-brand {
     background-position: center center;
