@@ -88,15 +88,19 @@ Y軸はvhが基準
     height: 100%;
     position: relative;
     z-index: 10; }
-  .webinfo-component .titel {
-    z-index: 2;
-    position: relative;
-    padding-top: 15%;
-    color: #FFF;
-    font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: block; }
+    .webinfo-component .frontground .title {
+      z-index: 0;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      position: relative;
+      color: #FFF;
+      font-weight: bold;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: block; }
   .webinfo-component .url-brand {
     background-position: center center;
     background-repeat: no-repeat;

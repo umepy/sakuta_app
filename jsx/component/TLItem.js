@@ -44,7 +44,7 @@ export default class TLItem extends React.Component {
                     <a href="" onClick={e => openNewTab(e,this.props.see.url)} >
                         <span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
                         <div class="frontground">
-                        <span class="title">{this.state.title}</span>
+                            <div class="title">{this.state.title}</div>
                         </div>
                     </a>
                 </div>
