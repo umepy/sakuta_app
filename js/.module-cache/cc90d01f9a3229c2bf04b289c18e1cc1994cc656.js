@@ -41,12 +41,14 @@ export default class TLItem extends React.Component {
         if(this.props.see.type=="web"){
             return (
                 React.createElement("div", {id: "TL-item", class: "webinfo-component"}, 
-                    React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
-                        React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
-                        React.createElement("div", {class: "frontground"}, 
-                        React.createElement("span", {class: "title"}, this.state.title)
-                        )
-                    )
+                React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
+                    React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
+                React.createElement("div", {class: "frontground"}, 
+                            React.createElement("span", {class: "title"}, this.state.title), 
+                    React.createElement("span", {class: "description"}, this.state.description), 
+                    React.createElement("span", {class: "url"}, React.createElement("a", null, this.state.url)), " "/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/
+                )
+                )
                 )
             )
         }
@@ -66,7 +68,7 @@ export default class TLItem extends React.Component {
             return(
                 React.createElement("div", null, " ")
             )
-            console.log("error: undefined type:"+ this.props.see.type)
+            console.log("error: type is nothing"+ this.props.see.type)
         }
     }
 }

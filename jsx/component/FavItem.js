@@ -31,15 +31,13 @@ export default class FavItem extends React.Component {
     render(){
         if(this.props.see.type=="web"){
             return (
-                <div class="fav-component">
+                <div class="webinfo-component">
                 <a href="" onClick={e => openNewTab(e,this.props.see.url)} >
                     <span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
-                <div class="frontground">
+                        <div class="frontground">
                             <span class="title">{this.state.title}</span>
-                    <span class="description">{this.state.description}</span>
-                    <span class="url"><a>{this.state.url}</a></span> {/* a hrefはエクステンションからは移動できない. tabを開いて上げる必要がある*/}
-                </div>
-                </a>
+                        </div>
+                    </a>
                 </div>
             )
         }

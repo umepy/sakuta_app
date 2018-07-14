@@ -1,6 +1,6 @@
 import Timeline from './component/timeline.js'
 import Menu from './component/menu.js'
-import SearchWindow from "./component/SearchWindow.js"
+import SearchWindow from "./SearchWindow.js"
 
 class Main extends React.Component {
   render(){

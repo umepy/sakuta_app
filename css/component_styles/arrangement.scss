@@ -15,8 +15,8 @@ $searchWindowHeight: 20vh;
 
 // タイムライン
 $timeLineRight: $menuLeft;
-$timeLineTop: $menuTop;
-$timeLineWidth: 40vw;
+$timeLineTop: 30vh;
+$timeLineWidth: 50vw;
 $timeLineHeight: 100vh - 2 * $menuTop;
 
 $tlListWidth: $timeLineWidth - 2;
@@ -28,7 +28,7 @@ $tlListHeight: 100%;
 // メニュー
 #menu{
   position: fixed;
-  top: $menuTop;
+  top: $timeLineTop;
   left: $menuLeft;
   width: calc( 100vw - #{$timeLineWidth} - #{$menuLeft} * 2 - #{$menuRightMargin});
 
@@ -41,6 +41,7 @@ $tlListHeight: 100%;
 }
 // お気に入りリスト
 #favList{
+  margin-top:50px; 
   display: block;
   flex-wrap: wrap;
 }
@@ -50,25 +51,24 @@ $tlListHeight: 100%;
   position: fixed;
   right: $timeLineRight;
   top: $timeLineTop;
-  width: $timeLineWidth;
-  height: $timeLineHeight;
-  margin: 0;
-  padding: 0;
+  width:$timeLineWidth;
 }
 
 #tl-container{
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.33);
   width: $timeLineWidth;
-  height: $timeLineHeight;
-  margin: 0;
-  padding: 0;
-  overflow-y:scroll
+  height: 60%;
+  overflow-y:scroll;
+  //background-color: rgba(255, 255, 255, 0.33);
 }
 
 #tlList{
-  margin: auto;
   width: $tlListWidth;
-  height: $tlListHeight;
+  padding-left:4%;
+  padding-right:4%;
+  height: 100%;//$tlListHeight;
   overflow-y: scroll;
+  margin: 0 auto;
+  display: block;
+  flex-wrap: wrap;
 }

@@ -27,11 +27,13 @@ export default class Timeline extends React.Component {
       get_seelater().then(data => {
           this.setState({sees: data});
       });
-      //TODO:ここをタブのやつに変更する
       get_seelater().then(data =>{
           this.setState({removeTabs: data});
       });
   }
+
+
+
 
   render(){
     var list = this.state.sees
@@ -44,22 +46,24 @@ export default class Timeline extends React.Component {
       React.createElement(Tabs, null, 
             React.createElement(TabList, null, 
               React.createElement(Tab, null, "後で見る"), 
-              React.createElement(Tab, null, "削除タブ"), 
-              React.createElement(Tab, null, "メモ")
+              React.createElement(Tab, null, "メモ"), 
+              React.createElement(Tab, null, "削除タブ")
             ), 
             React.createElement(TabPanel, null, 
               React.createElement(TLContainer, null, 
                 React.createElement(TLList, {seeList: list})
               )
             ), 
+
+            React.createElement(TabPanel, null, 
+            React.createElement(TLContainer, null
+            )
+            ), 
+
             React.createElement(TabPanel, null, 
               React.createElement(TLContainer, null, 
                 React.createElement(TLList, {seeList: rmlist})
               )
-            ), 
-            React.createElement(TabPanel, null, 
-            React.createElement(TLContainer, null
-            )
             )
             
       )
