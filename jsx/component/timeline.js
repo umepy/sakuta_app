@@ -18,7 +18,8 @@ export default class Timeline extends React.Component {
     super();
     this.state={
       sees:[],
-      memos:[]
+      memos:[],
+      removeTabs:[]
     }
   }
 
@@ -26,34 +27,15 @@ export default class Timeline extends React.Component {
       get_seelater().then(data => {
           this.setState({sees: data});
       });
-      this.getMemoFromDB().then(data=>{
-        this.setState({memos:data})
-      }
-
-      )
-  }
-
-
-  async getseeLaterFromDB()
-  {
-    let sees;
-    sees = await get_seelater();
-    console.log(JSON.stringify(sees));
-    return sees;
-  }
-
-  async getMemoFromDB()
-  {
-    var memos = memoList
-    console.log(memos)
-    return memos
+      //TODO:ここをタブのやつに変更する
+      get_seelater().then(data =>{
+          this.setState({removeTabs: data});
+      });
   }
 
   render(){
     var list = this.state.sees
-    //list.push(this.state.memos)
-
-    //TODO: _idの小さい順に並べるとかすれば、ソートできる
+    var rmlist=this.state.sees
 
 
     return (
@@ -62,6 +44,7 @@ export default class Timeline extends React.Component {
       <Tabs>
             <TabList>
               <Tab>後で見る</Tab>
+              <Tab>削除タブ</Tab>
               <Tab>メモ</Tab>
             </TabList>
             <TabPanel>
@@ -70,10 +53,16 @@ export default class Timeline extends React.Component {
               </TLContainer>
             </TabPanel>
             <TabPanel>
-            <TLContainer>
+              <TLContainer>
+                <TLList seeList={rmlist} />
               </TLContainer>
             </TabPanel>
-          </Tabs>
+            <TabPanel> 
+            <TLContainer>
+            </TLContainer>
+            </TabPanel>
+            
+      </Tabs>
         { /*<PanelContainer>
           {/* ここにコメントを入れるためのフォーム */}
           {/*<TLList seeList={list} />
