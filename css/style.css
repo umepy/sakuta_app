@@ -24,7 +24,7 @@ Y軸はvhが基準
 */
 #menu {
   position: fixed;
-  top: 5vh;
+  top: 30vh;
   left: 2.5vw;
   width: calc( 100vw - 50vw - 2.5vw * 2 - 2.5vw); }
 
@@ -34,6 +34,7 @@ Y軸はvhが基準
   height: 20vh; }
 
 #favList {
+  margin-top: 50px;
   display: block;
   flex-wrap: wrap; }
 
@@ -158,7 +159,6 @@ Y軸はvhが基準
     font-size: 12px;
     line-height: 14px; } }
 .panel-container {
-  background-color: rgba(255, 255, 255, 0.33);
   width: 100%;
   height: 100%; }
 

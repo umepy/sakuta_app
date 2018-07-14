@@ -28,7 +28,7 @@ $tlListHeight: 100%;
 // メニュー
 #menu{
   position: fixed;
-  top: $menuTop;
+  top: $timeLineTop;
   left: $menuLeft;
   width: calc( 100vw - #{$timeLineWidth} - #{$menuLeft} * 2 - #{$menuRightMargin});
 
@@ -41,6 +41,7 @@ $tlListHeight: 100%;
 }
 // お気に入りリスト
 #favList{
+  margin-top:50px; 
   display: block;
   flex-wrap: wrap;
 }
