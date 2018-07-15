@@ -1,7 +1,8 @@
 @charset "UTF-8";
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif; }
 
 html {
   height: 100vh; }
