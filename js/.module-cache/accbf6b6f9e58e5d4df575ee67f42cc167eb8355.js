@@ -44,7 +44,7 @@ export default class TLItem extends React.Component {
                     React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
                         React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
                         React.createElement("div", {class: "frontground"}, 
-                            React.createElement("div", {class: "title"}, this.state.title)
+                        React.createElement("span", {class: "title"}, React.createElement("p", null, this.state.title))
                         )
                     )
                 )

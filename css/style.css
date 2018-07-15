@@ -76,7 +76,7 @@ Y軸はvhが基準
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    z-index: 1; }
+    z-index: 0; }
   .webinfo-component .frontground {
     background: -moz-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
     background: -webkit-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
@@ -88,23 +88,26 @@ Y軸はvhが基準
     height: 100%;
     position: relative;
     z-index: 10; }
-  .webinfo-component .titel {
-    z-index: 2;
-    position: relative;
-    padding-top: 15%;
-    color: #FFF;
-    font-weight: bold;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: block; }
-  .webinfo-component .url-brand {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    float: left;
-    height: 20px;
-    width: 20px;
-    margin: 4px 10px 0; }
+    .webinfo-component .frontground .title {
+      z-index: 2;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      word-wrap: normal;
+      position: relative;
+      padding-top: 15%;
+      color: #FFF;
+      font-weight: bold;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: block;
+      text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000; }
+  .webinfo-component .frontground:hover {
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8; }
 
 @media (max-width: 768px) {
   .webinfo-component {
