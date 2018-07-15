@@ -25,8 +25,8 @@ export default class SearchWindow extends React.Component {
     });
   }
 
-  onBlur(value){
-    if(value != '') this.setState({ class: 'entered' })
+  onBlur(){
+    if(this.state.value != '') this.setState({ class: 'entered' })
     else this.setState({ class: '' })
   }
 
@@ -38,7 +38,7 @@ export default class SearchWindow extends React.Component {
           class: this.state.class, 
           onKeyDown: e=>{if(e.key=='Enter') window.location.href = 'https://www.google.co.jp/search?q='+this.state.value}, 
           onChange: this.handleInput, 
-          onBlur: this.onBlur.bind(this, this.state.value)})
+          onBlur: this.onBlur})
       )
     );
   }

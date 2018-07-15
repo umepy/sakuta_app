@@ -31,7 +31,6 @@ $tlListHeight: 100%;
   top: $timeLineTop;
   left: $menuLeft;
   width: calc( 100vw - #{$timeLineWidth} - #{$menuLeft} * 2 - #{$menuRightMargin});
-
 }
 // 検索窓
 #searchWindow{
@@ -41,7 +40,7 @@ $tlListHeight: 100%;
 }
 // お気に入りリスト
 #favList{
-  margin-top:50px; 
+  margin-top:50px;
   display: block;
   flex-wrap: wrap;
 }

@@ -4,6 +4,7 @@ export default class SearchWindow extends React.Component {
     this.state = {
       value: '',
       word: '',
+      class: '',
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -24,10 +25,20 @@ export default class SearchWindow extends React.Component {
     });
   }
 
+  onBlur(value){
+    if(value != '') this.setState({ class: 'entered' })
+    else this.setState({ class: '' })
+  }
+
   render() {
     return (
       <div id="searchWindow" align="center">
-    		<input type="search" placeholder="検索" onKeyDown={e=>{if(e.key=='Enter') window.location.href = 'https://www.google.co.jp/search?q='+this.state.value}} value={this.state.value} onChange={this.handleInput} size="50" />
+    		<input type="search" placeholder="Search" size="50"
+          value={this.state.value}
+          class={this.state.class}
+          onKeyDown={e=>{if(e.key=='Enter') window.location.href = 'https://www.google.co.jp/search?q='+this.state.value}}
+          onChange={this.handleInput}
+          onBlur={this.onBlur.bind(this, this.state.value)}/>
       </div>
     );
   }
