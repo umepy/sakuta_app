@@ -69,7 +69,7 @@ export default class TLItem extends React.Component {
                     style={{display: this.state.displayX}}
                     onMouseOver={this.onMouseOver}
                     onMouseOut={this.onMouseOut}>
-                    <img src="../../img/x.svg" class={this.props.see._id}/>
+                    <img src="../../img/x.svg"/>
                   </div>
                 </div>
             )
