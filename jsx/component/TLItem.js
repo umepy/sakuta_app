@@ -9,8 +9,11 @@ export default class TLItem extends React.Component {
             url: "",
             description: "",
             image:"",
-            datetime:""
+            datetime:"",
+            displayX: "none",
         };
+        this.onMouseOver = this.onMouseOver.bind(this)
+        this.onMouseOut = this.onMouseOut.bind(this)
     }
 
     componentWillMount(){
@@ -36,17 +39,38 @@ export default class TLItem extends React.Component {
             }
     }
 
+    onMouseOver(){
+      this.setState({
+        displayX: "inline-block",
+      })
+    }
+
+    onMouseOut(){
+      this.setState({
+        displayX: "none",
+      })
+    }
 
     render(){
         if(this.props.see.type=="web"){
             return (
-                <div id="TL-item" class="webinfo-component">
+                <div class="TL-item">
+                  <div class="webinfo-component"
+                    onMouseOver={this.onMouseOver}
+                    onMouseOut={this.onMouseOut}>
                     <a href="" onClick={e => openNewTab(e,this.props.see.url)} >
                         <span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
                         <div class="frontground">
                             <div class="title">{this.state.title}</div>
                         </div>
                     </a>
+                  </div>
+                  <div class="X-button"
+                    style={{display: this.state.displayX}}
+                    onMouseOver={this.onMouseOver}
+                    onMouseOut={this.onMouseOut}>
+                    <img src="../../img/x.svg"/>
+                  </div>
                 </div>
             )
         }

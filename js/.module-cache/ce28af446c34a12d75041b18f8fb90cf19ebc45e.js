@@ -9,11 +9,8 @@ export default class TLItem extends React.Component {
             url: "",
             description: "",
             image:"",
-            datetime:"",
-            displayX: "none",
+            datetime:""
         };
-        this.onMouseOver = this.onMouseOver.bind(this)
-        this.onMouseOut = this.onMouseOut.bind(this)
     }
 
     componentWillMount(){
@@ -39,38 +36,29 @@ export default class TLItem extends React.Component {
             }
     }
 
-    onMouseOver(){
-      this.setState({
-        displayX: "inline-block",
-      })
-    }
-
-    onMouseOut(){
-      this.setState({
-        displayX: "none",
-      })
-    }
 
     render(){
         if(this.props.see.type=="web"){
             return (
-                React.createElement("div", {class: "TL-item"}, 
-                  React.createElement("div", {class: "webinfo-component", 
-                    onMouseOver: this.onMouseOver, 
-                    onMouseOut: this.onMouseOut}, 
+                React.createElement("div", {class: "TL-item webinfo-component"}, 
                     React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
                         React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
                         React.createElement("div", {class: "frontground"}, 
                             React.createElement("div", {class: "title"}, this.state.title)
                         )
+                    ), 
+                    React.createElement("div", {class: "X-button"}
+                      /* <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512">
+                      <style type="text/css">
+                      	.st0{fill:#4B4B4B;}
+                      </style>
+                      <g>
+                      	<circle cx="256" cy="256" r="200" style="fill: rgb(255, 46, 46);"></circle>
+                      	<polygon class="polygon-x" points="339.566,150.861 256,234.436 172.444,150.861 150.87,172.444 234.426,256 150.87,339.556
+                      		172.444,361.139 256,277.574 339.566,361.139 361.139,339.566 277.574,256 361.139,172.444 	" style="fill: rgb(255, 255, 255);"></polygon>
+                      </g>
+                      </svg> */
                     )
-                  ), 
-                  React.createElement("div", {class: "X-button", 
-                    style: {display: this.state.displayX}, 
-                    onMouseOver: this.onMouseOver, 
-                    onMouseOut: this.onMouseOut}, 
-                    React.createElement("img", {src: "../../img/x.svg"})
-                  )
                 )
             )
         }

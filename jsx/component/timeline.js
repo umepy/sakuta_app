@@ -57,11 +57,11 @@ export default class Timeline extends React.Component {
                 <TLList seeList={rmlist} />
               </TLContainer>
             </TabPanel>
-            <TabPanel> 
+            <TabPanel>
             <TLContainer>
             </TLContainer>
             </TabPanel>
-            
+
       </Tabs>
         { /*<PanelContainer>
           {/* ここにコメントを入れるためのフォーム */}
@@ -71,4 +71,3 @@ export default class Timeline extends React.Component {
     )
   }
 }
-
