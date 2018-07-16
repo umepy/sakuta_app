@@ -125,7 +125,7 @@ function manage_bookmark_by_number(){
 function get_history_detail(){
     let time_split = 4; // 1日の分割数、デフォルトは4
     let splited_time = 24 / time_split; // 単位時間
-    let search_limit = 5040; // 検索時間の上限、デフォルトは1月(5040)
+    let search_limit = 24; // 検索時間の上限、デフォルトは1月(5040)
     let unit_time = 24 * 60 * 60 * 1000 / time_split; // 1unitの時間
     let now_time = new Date(); // 現在時刻
     let start_time, end_time; //検索時の範囲指定用の時刻
@@ -136,7 +136,7 @@ function get_history_detail(){
     }
     // 現在時刻と直近の時間帯をstart,end_timeにセット
     end_time = now_time.getTime();
-    // 4分割は斜めにやりたいので、最初に3ひいておく
+    // 4分割は斜めにやりたいので、最初に3ひいておく(0:21-3, 1:3-9, 2:9-15, 3:15-21)
     start_time = new Date(new Date(now_time-3 * 60 * 60 * 1000).getFullYear(), new Date(now_time-3 * 60 * 60 * 1000).getMonth(), new Date(now_time-3 * 60 * 60 * 1000).getDate(), 3 + splited_time * (Math.floor((new Date(now_time-3 * 60 * 60 * 1000).getHours())/splited_time))).getTime();
 
     let first_query = {
@@ -145,6 +145,9 @@ function get_history_detail(){
         endTime:end_time,
         maxResults:100000
     };
+
+    let quereis = []
+
     while(first_query.startTime > search_limit_time){
         let query = {
             text:'',
@@ -161,42 +164,43 @@ function get_history_detail(){
                 endTime:query.endTime,
                 maxResults:100000
             };
-            get_hist(subquery).then(function catch_data(hist){
-                if(hist!={}) {
-                    for (url in hist) {
-                        if (history_log[kubun][url]) history_log[kubun][url]['visitCount'] += 1;
-                        else {
-                            history_log[kubun][url] = hist[url];
-                            history_log[kubun][url]['visitCount']=1
-                        }
-                    }
-                }
-            });
+            quereis[quereis.length] = [subquery, kubun];
             query.endTime-= 60 * 1000;
         }
         first_query.endTime=first_query.startTime;
         first_query.startTime-= splited_time * 60 * 60 * 1000;
     }
-    console.log(history_log)
 
-    let history = {};
-
-    // 実際の検索
-    chrome.history.search(query, function (results) {
-        results.forEach(function (result) {
-            history[result.url] = result;
-            //document.write((new Date().getTime() - result.lastVisitTime) / 1000 /60 /60)
+    let a = () => {
+        return Promise.all(quereis.map((data) => {
+            return get_hist(data)
+        }))
+    }
+    a().then((result) =>{
+        for(let i=0; i<result.length; i++){
+            if(result[i]!=={}) {
+                for (url in result[i]) {
+                    if (history_log[result[i][url].kubun][result[i][url].url]) history_log[result[i][url].kubun][result[i][url].url] += 1;
+                    else {
+                        history_log[result[i][url].kubun][result[i][url].url] = 1;
+                    }
+                }
+            }
+        }
+        chrome.storage.local.set({history_data: history_log}, function () {
+            console.log('Saved Analysed result');
         });
-    });
-    return history;
+        update_top_site()
+    })
 }
 
 // 同期させつつ、過去の閲覧履歴を取得する関数
 function get_hist(query){
     return new Promise((resolve)=>{
-        chrome.history.search(query, (results) =>{
+        chrome.history.search(query[0], (results) =>{
             let history={};
             results.forEach(function (result) {
+                result.kubun = query[1]
                 history[result.url] = result;
             });
             resolve(history);
@@ -204,5 +208,17 @@ function get_hist(query){
     });
 }
 
+// 上位のサイトのTOP20くらいまで数えて更新する関数
+function update_top_site(){
+    chrome.storage.local.get('history_data', function (data) {
+        console.log(data.history_data)
+        // storageにseelaterがなければ初期化
+        if (typeof data.history_data !== 'undefined') {
+            console.log(data.history_data)
+        }
+    });
+}
 
-get_history_detail();
+
+
+get_history_detail_ver2()
