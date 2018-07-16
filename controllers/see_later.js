@@ -6,7 +6,8 @@ function del_seelater(url){
         if (typeof data.seelater !== 'undefined') {
             let flag = false;
             let index = 0;
-            for (let i=0; i< data.seelater.length; i++){
+            let i = 0
+            for (; i< data.seelater.length; i++){
                 if (url == data.seelater[i].url){
                     flag = true;
                     break;

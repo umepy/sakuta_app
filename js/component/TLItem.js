@@ -68,7 +68,8 @@ export default class TLItem extends React.Component {
                   React.createElement("div", {class: "X-button", 
                     style: {display: this.state.displayX}, 
                     onMouseOver: this.onMouseOver, 
-                    onMouseOut: this.onMouseOut}, 
+                    onMouseOut: this.onMouseOut,
+                    onClick: e => del_seelater(this.props.see.url)},
                     React.createElement("img", {src: "../../img/x.svg"})
                   )
                 )
