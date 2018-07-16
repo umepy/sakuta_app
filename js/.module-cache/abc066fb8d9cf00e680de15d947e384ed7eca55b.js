@@ -12,8 +12,6 @@ export default class TLItem extends React.Component {
             datetime:"",
             displayX: "none",
         };
-        this.onMouseOver = this.onMouseOver.bind(this)
-        this.onMouseOut = this.onMouseOut.bind(this)
     }
 
     componentWillMount(){
@@ -45,7 +43,7 @@ export default class TLItem extends React.Component {
       })
     }
 
-    onMouseOut(){
+    onMouseOver(){
       this.setState({
         displayX: "none",
       })

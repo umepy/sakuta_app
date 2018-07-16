@@ -12,8 +12,6 @@ export default class TLItem extends React.Component {
             datetime:"",
             displayX: "none",
         };
-        this.onMouseOver = this.onMouseOver.bind(this)
-        this.onMouseOut = this.onMouseOut.bind(this)
     }
 
     componentWillMount(){
@@ -40,15 +38,7 @@ export default class TLItem extends React.Component {
     }
 
     onMouseOver(){
-      this.setState({
-        displayX: "inline-block",
-      })
-    }
 
-    onMouseOut(){
-      this.setState({
-        displayX: "none",
-      })
     }
 
     render(){
@@ -56,8 +46,7 @@ export default class TLItem extends React.Component {
             return (
                 React.createElement("div", {class: "TL-item"}, 
                   React.createElement("div", {class: "webinfo-component", 
-                    onMouseOver: this.onMouseOver, 
-                    onMouseOut: this.onMouseOut}, 
+                    onMouseOver: this.onMouseOver}, 
                     React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
                         React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
                         React.createElement("div", {class: "frontground"}, 
@@ -66,10 +55,8 @@ export default class TLItem extends React.Component {
                     )
                   ), 
                   React.createElement("div", {class: "X-button", 
-                    style: {display: this.state.displayX}, 
-                    onMouseOver: this.onMouseOver, 
-                    onMouseOut: this.onMouseOut}, 
-                    React.createElement("img", {src: "../../img/x.svg", class: this.props.see._id})
+                    style: {display: this.state.displayX}}, 
+                    React.createElement("img", {src: "../../img/x.svg", className: this.see._id})
                   )
                 )
             )

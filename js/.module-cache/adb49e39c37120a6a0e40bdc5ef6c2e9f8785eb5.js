@@ -46,9 +46,9 @@ export default class TLItem extends React.Component {
     }
 
     onMouseOut(){
-      this.setState({
-        displayX: "none",
-      })
+      // this.setState({
+      //   displayX: "none",
+      // })
     }
 
     render(){

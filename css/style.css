@@ -61,6 +61,12 @@ Y軸はvhが基準
   display: block;
   flex-wrap: wrap; }
 
+.TL-item {
+  width: 200px;
+  height: 140px;
+  display: inline-block;
+  margin-top: 10px; }
+
 .webinfo-component {
   border-radius: 5px;
   width: 182px;
@@ -79,7 +85,6 @@ Y軸はvhが基準
     position: absolute;
     z-index: 0; }
   .webinfo-component .frontground {
-    background: -moz-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
     background: -webkit-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
     background: linear-gradient(to bottom, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#331db0ed',endColorstr='#66000000',GradientType=0);
@@ -113,6 +118,17 @@ Y軸はvhが基準
 @media (max-width: 768px) {
   .webinfo-component {
     width: 250px !important; } }
+.TL-item .X-button {
+  position: relative;
+  width: 40px;
+  top: -155px;
+  left: 170px;
+  z-index: 20;
+  float: left;
+  transition-duration: 0.5s; }
+  .TL-item .X-button:hover {
+    transform: scale(1.05, 1.05); }
+
 .memo-component {
   border: 1px solid #EFEFEF;
   border-radius: 10px;

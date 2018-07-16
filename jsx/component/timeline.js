@@ -34,7 +34,8 @@ export default class Timeline extends React.Component {
   }
 
   render(){
-    var list = this.state.sees
+    // var list = this.state.sees
+    var list = seeList//// DEBUG: 消す!!!!!
     var rmlist=this.state.sees
 
 
@@ -57,11 +58,11 @@ export default class Timeline extends React.Component {
                 <TLList seeList={rmlist} />
               </TLContainer>
             </TabPanel>
-            <TabPanel> 
+            <TabPanel>
             <TLContainer>
             </TLContainer>
             </TabPanel>
-            
+
       </Tabs>
         { /*<PanelContainer>
           {/* ここにコメントを入れるためのフォーム */}
@@ -71,4 +72,3 @@ export default class Timeline extends React.Component {
     )
   }
 }
-

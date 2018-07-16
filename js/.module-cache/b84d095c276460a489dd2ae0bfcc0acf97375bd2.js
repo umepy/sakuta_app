@@ -9,11 +9,8 @@ export default class TLItem extends React.Component {
             url: "",
             description: "",
             image:"",
-            datetime:"",
-            displayX: "none",
+            datetime:""
         };
-        this.onMouseOver = this.onMouseOver.bind(this)
-        this.onMouseOut = this.onMouseOut.bind(this)
     }
 
     componentWillMount(){
@@ -39,38 +36,20 @@ export default class TLItem extends React.Component {
             }
     }
 
-    onMouseOver(){
-      this.setState({
-        displayX: "inline-block",
-      })
-    }
-
-    onMouseOut(){
-      this.setState({
-        displayX: "none",
-      })
-    }
 
     render(){
         if(this.props.see.type=="web"){
             return (
-                React.createElement("div", {class: "TL-item"}, 
-                  React.createElement("div", {class: "webinfo-component", 
-                    onMouseOver: this.onMouseOver, 
-                    onMouseOut: this.onMouseOut}, 
+                React.createElement("div", {class: "TL-item webinfo-component"}, 
                     React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
                         React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
                         React.createElement("div", {class: "frontground"}, 
                             React.createElement("div", {class: "title"}, this.state.title)
                         )
+                    ), 
+                    React.createElement("div", {class: "X-button"}, 
+                      React.createElement("img", {src: "../../img/x.svg"})
                     )
-                  ), 
-                  React.createElement("div", {class: "X-button", 
-                    style: {display: this.state.displayX}, 
-                    onMouseOver: this.onMouseOver, 
-                    onMouseOut: this.onMouseOut}, 
-                    React.createElement("img", {src: "../../img/x.svg", class: this.props.see._id})
-                  )
                 )
             )
         }
