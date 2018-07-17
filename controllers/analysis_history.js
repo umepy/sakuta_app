@@ -125,7 +125,7 @@ function manage_bookmark_by_number(){
 function get_history_detail(){
     let time_split = 4; // 1日の分割数、デフォルトは4
     let splited_time = 24 / time_split; // 単位時間
-    let search_limit = 24; // 検索時間の上限、デフォルトは1月(5040)
+    let search_limit = 200; // 検索時間の上限、デフォルトは1月(5040)
     let unit_time = 24 * 60 * 60 * 1000 / time_split; // 1unitの時間
     let now_time = new Date(); // 現在時刻
     let start_time, end_time; //検索時の範囲指定用の時刻
@@ -147,7 +147,6 @@ function get_history_detail(){
     };
 
     let quereis = []
-
     while(first_query.startTime > search_limit_time){
         let query = {
             text:'',
@@ -156,7 +155,8 @@ function get_history_detail(){
             maxResults:100000
         };
         //現在の時刻が配列の何番目に入るか計算
-        let kubun=Math.floor(new Date(query.startTime).getHours()/splited_time);
+        let kubun=Math.floor((new Date(query.startTime).getHours()+3)/splited_time);
+        if(kubun >=4) kubun = 0;
         while(query.startTime < query.endTime){
             let subquery = {
                 text:'',
@@ -199,6 +199,7 @@ function get_hist(query){
     return new Promise((resolve)=>{
         chrome.history.search(query[0], (results) =>{
             let history={};
+            //if(query[1]==0) console.log(JSON.stringify(new Date(query[0].startTime)))
             results.forEach(function (result) {
                 result.kubun = query[1];
                 history[result.url] = result;
@@ -253,6 +254,5 @@ function get_top_site(get_number){
 
 // インストール時のみに行う分析イベント
 chrome.runtime.onInstalled.addListener((detail)=>{
-    console.log('test')
     get_history_detail()
 })
