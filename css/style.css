@@ -48,12 +48,11 @@ Y軸はvhが基準
 #tl-container {
   position: fixed;
   width: 50vw;
-  height: 60%; }
+  height: 60%;
+  overflow-x: hidden; }
 
 #tlList {
-  width: 48vw;
-  padding-left: 4%;
-  padding-right: 4%;
+  width: calc(100% + 17px);
   height: 100%;
   overflow-y: scroll;
   margin: 0 auto;

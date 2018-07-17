@@ -57,12 +57,14 @@ $tlListHeight: 100%;
   position: fixed;
   width: $timeLineWidth;
   height: 60%;
+  overflow-x: hidden;
 }
 
 #tlList{
-  width: $tlListWidth;
-  padding-left:4%;
-  padding-right:4%;
+  //width: $tlListWidth;
+  width: calc(100% + 17px);
+ // padding-left:4%;
+ // padding-right:4%;
   height: 100%;//$tlListHeight;
   overflow-y: scroll;
   margin: 0 auto;
