@@ -17,7 +17,8 @@
         "scripts": [
             "controllers/startup.js",
             "controllers/right_click_menu.js",
-            "controllers/images/capture_shot.js"
+            "controllers/images/capture_shot.js",
+            "controllers/analysis_history.js"
         ],
         "persistent": false
     },
@@ -29,3 +30,4 @@
     ],
     "content_security_policy": " script-src 'self' 'sha256-VePmQi2Ey76e61vq8bYfhTPpa3kR3k0fkLS2r0oGWPQ='; object-src 'self'"
 }
+

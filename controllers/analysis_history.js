@@ -216,7 +216,7 @@ function update_top_site(){
             for(let i in [0,1,2,3]){
                 if(data.history_data[i] !== {}){
                     for(let j in data.history_data[i]){
-                        result[i][result[i].length] = {url:j, visit:data.history_data[i][j]}
+                        result[i][result[i].length] = {url:j, visit:data.history_data[i][j], type:'web', _id:'test'}
                     }
                 }
                 result[i].sort((a,b)=>{
@@ -236,4 +236,23 @@ function update_top_site(){
     });
 }
 
-get_history_detail()
+// 時間帯おすすめページを取得する関数
+function get_top_site(get_number){
+    return new Promise((resolve) =>{
+        chrome.storage.local.get('history_top', (data)=>{
+            if(data.history_top !== undefined){
+                let kubun=Math.floor((new Date().getHours() + 3)/6);
+                if(kubun >= 4) kubun = 0;
+                resolve(data.history_top[kubun].slice(0,get_number))
+            }else{
+                resolve([])
+            }
+        })
+    })
+}
+
+// インストール時のみに行う分析イベント
+chrome.runtime.onInstalled.addListener((detail)=>{
+    console.log('test')
+    get_history_detail()
+})
