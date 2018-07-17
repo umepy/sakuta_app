@@ -17,7 +17,7 @@ body {
   background-color: #000; }
 
 div.timeline {
-  overflow-y: scroll; }
+  overflow: hidden; }
 
 /* --- 基本変数
 X軸はタイムラインはpx, メニューは%が基準
@@ -48,8 +48,7 @@ Y軸はvhが基準
 #tl-container {
   position: fixed;
   width: 50vw;
-  height: 60%;
-  overflow-y: scroll; }
+  height: 60%; }
 
 #tlList {
   width: 48vw;
