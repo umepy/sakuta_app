@@ -49,12 +49,12 @@ export default class Timeline extends React.Component {
             </TabList>
             <TabPanel>
               <TLContainer>
-                <TLList seeList={list} />
+                <TLList seeList={list.slice().reverse()} />
               </TLContainer>
             </TabPanel>
             <TabPanel>
               <TLContainer>
-                <TLList seeList={rmlist} />
+                <TLList seeList={rmlist.slice().reverse()} />
               </TLContainer>
             </TabPanel>
             <TabPanel>

@@ -17,14 +17,15 @@ export default class TLItem extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props.see.type)
+        //console.log(this.props.see.type)
+
         if(this.props.see.type=="web"){
             geturlinfoAsync(this.props.see.url)
             .then((resp)=>{
                 this.setState({
                 title: resp.title,
                 description:  resp.description,
-                image: resp.image ,
+                image: resp.image,
                 url: this.props.see.url
                 });
             })
@@ -51,16 +52,10 @@ export default class TLItem extends React.Component {
       })
     }
 
-    onDelete(url){
-      del_seelater(url)
-      let elem = this.element
-      elem.parentNode.removeChild(elem);
-    }
-
     render(){
         if(this.props.see.type=="web"){
             return (
-                <div class="TL-item" ref={ div => { this.element = div }}>
+                <div class="TL-item">
                   <div class="webinfo-component"
                     onMouseOver={this.onMouseOver}
                     onMouseOut={this.onMouseOut}>
@@ -74,8 +69,7 @@ export default class TLItem extends React.Component {
                   <div class="X-button"
                     style={{display: this.state.displayX}}
                     onMouseOver={this.onMouseOver}
-                    onMouseOut={this.onMouseOut}
-                    onClick={this.onDelete.bind(this, this.props.see.url)}>
+                    onMouseOut={this.onMouseOut}>
                     <img src="../../img/x.svg"/>
                   </div>
                 </div>

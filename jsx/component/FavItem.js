@@ -14,16 +14,16 @@ export default class FavItem extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props.see.type)
-            geturlinfoAsync(this.props.see.url)
-            .then((resp)=>{
-                this.setState({
-                title: resp.title,
-                description:  resp.description,
-                image: resp.image ,
-                url: this.props.see.url
-                });
-            })
+        //console.log(this.props.see.type)
+        geturlinfoAsync(this.props.see.url)
+        .then((resp)=>{
+            this.setState({
+            title: resp.title,
+            description:  resp.description,
+            image: resp.image ,
+            url: this.props.see.url
+            });
+        })
 
     }
 
