@@ -200,7 +200,7 @@ function get_hist(query){
         chrome.history.search(query[0], (results) =>{
             let history={};
             results.forEach(function (result) {
-                result.kubun = query[1]
+                result.kubun = query[1];
                 history[result.url] = result;
             });
             resolve(history);
@@ -211,14 +211,29 @@ function get_hist(query){
 // 上位のサイトのTOP20くらいまで数えて更新する関数
 function update_top_site(){
     chrome.storage.local.get('history_data', function (data) {
-        console.log(data.history_data)
-        // storageにseelaterがなければ初期化
+        let result = {0:[], 1:[], 2:[], 3:[]}
         if (typeof data.history_data !== 'undefined') {
-            console.log(data.history_data)
+            for(let i in [0,1,2,3]){
+                if(data.history_data[i] !== {}){
+                    for(let j in data.history_data[i]){
+                        result[i][result[i].length] = {url:j, visit:data.history_data[i][j]}
+                    }
+                }
+                result[i].sort((a,b)=>{
+                    if(a.visit > b.visit) return -1;
+                    if(a.visit < b.visit) return 1;
+                    return 0;
+                })
+                if(result[i].length > 20){
+                    result[i].splice(20, result[i].length)
+                }
+            }
+
+            chrome.storage.local.set({history_top: result}, function () {
+                console.log('Saved History Top');
+            });
         }
     });
 }
 
-
-
-get_history_detail_ver2()
+get_history_detail()
