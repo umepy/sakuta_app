@@ -17,7 +17,7 @@ body {
   background-color: #000; }
 
 div.timeline {
-  overflow-y: scroll; }
+  overflow: hidden; }
 
 /* --- 基本変数
 X軸はタイムラインはpx, メニューは%が基準
@@ -49,12 +49,10 @@ Y軸はvhが基準
   position: fixed;
   width: 50vw;
   height: 60%;
-  overflow-y: scroll; }
+  overflow-x: hidden; }
 
 #tlList {
-  width: 48vw;
-  padding-left: 4%;
-  padding-right: 4%;
+  width: calc(100% + 17px);
   height: 100%;
   overflow-y: scroll;
   margin: 0 auto;
@@ -183,7 +181,6 @@ Y軸はvhが基準
   height: 100%; }
 
 .react-tabs__tab-list {
-  border-bottom: 1px solid #aaa;
   margin: 0 0 10px;
   padding: 0; }
 
