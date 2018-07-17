@@ -14,9 +14,10 @@ const geturlinfoAsync =(url)=> {
           || $(responseText).filter("meta[property='title']").attr('content')
           || responseText.match(/<title>([^<]*)<\/title>/i).pop()
           || "No title"
+          //|| $(responseText).filter('title').text() || "No title"
         var adescription=$(responseText).filter("meta[property='og:description']").attr('content')
-        //|| $(responseText).filter("meta[property='description']").attr('content')
-        //|| $(responseText).filter("meta[name=description]").attr('content')
+        || $(responseText).filter("meta[property='description']").attr('content')
+        || $(responseText).filter("meta[name=description]").attr('content')
           || "\n\n"
         var aimage =$(responseText).filter("meta[property='og:image']").attr('content')
 
