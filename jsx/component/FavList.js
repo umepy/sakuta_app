@@ -10,13 +10,26 @@ const seeList =[
 ]
 
 export default class FavList extends React.Component {
-  render() {
-    return (
-      <div id="favList">
-        { seeList.map(see => (
-          <FavItem key={see._id} see={see} />
-        ))}
-      </div>
-    );
-  }
+    constructor(){
+        super();
+        this.state={
+            top_sites:[]
+        }
+    }
+
+    componentWillMount() {
+        get_top_site(8).then(data => {
+            this.setState({top_sites: data});
+        });
+    }
+
+    render() {
+      return (
+        <div id="favList">
+          { this.state.top_sites.map(see => (
+            <FavItem key={see._id} see={see} />
+          ))}
+        </div>
+      );
+    }
 }
