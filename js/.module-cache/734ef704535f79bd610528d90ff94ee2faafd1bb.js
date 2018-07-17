@@ -10,13 +10,15 @@ const geturlinfoAsync =(url)=> {
       .then((response)=>response.text())
       .then((responseText) => {
 
+        console.log(responseText.match(/<title>([^<]*)<\/title>/i).values)
         var atitle=$(responseText).filter("meta[property='og:title']").attr('content')
           || $(responseText).filter("meta[property='title']").attr('content')
-          || responseText.match(/<title>([^<]*)<\/title>/i).pop()
+          || $(responseText).match(/<title>([^<]*)<\/title>/i)
           || "No title"
+          //|| $(responseText).filter('title').text() || "No title"
         var adescription=$(responseText).filter("meta[property='og:description']").attr('content')
-        //|| $(responseText).filter("meta[property='description']").attr('content')
-        //|| $(responseText).filter("meta[name=description]").attr('content')
+        || $(responseText).filter("meta[property='description']").attr('content')
+        || $(responseText).filter("meta[name=description]").attr('content')
           || "\n\n"
         var aimage =$(responseText).filter("meta[property='og:image']").attr('content')
 
