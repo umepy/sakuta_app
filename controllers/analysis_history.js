@@ -180,9 +180,10 @@ function get_history_detail(){
         for(let i=0; i<result.length; i++){
             if(result[i]!=={}) {
                 for (url in result[i]) {
-                    if (history_log[result[i][url].kubun][result[i][url].url]) history_log[result[i][url].kubun][result[i][url].url] += 1;
+                    let new_url = url.slice(0,url.indexOf('?'))
+                    if (history_log[result[i][url].kubun][new_url]) history_log[result[i][url].kubun][new_url] += 1;
                     else {
-                        history_log[result[i][url].kubun][result[i][url].url] = 1;
+                        history_log[result[i][url].kubun][new_url] = 1;
                     }
                 }
             }
@@ -199,7 +200,6 @@ function get_hist(query){
     return new Promise((resolve)=>{
         chrome.history.search(query[0], (results) =>{
             let history={};
-            //if(query[1]==0) console.log(JSON.stringify(new Date(query[0].startTime)))
             results.forEach(function (result) {
                 result.kubun = query[1];
                 history[result.url] = result;
@@ -241,6 +241,7 @@ function update_top_site(){
 function get_top_site(get_number){
     return new Promise((resolve) =>{
         chrome.storage.local.get('history_top', (data)=>{
+            console.log(data)
             if(data.history_top !== undefined){
                 let kubun=Math.floor((new Date().getHours() + 3)/6);
                 if(kubun >= 4) kubun = 0;
