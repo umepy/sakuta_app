@@ -51,16 +51,10 @@ export default class TLItem extends React.Component {
       })
     }
 
-    onDelete(url){
-      del_seelater(url)
-      let elem = this.element
-      elem.parentNode.removeChild(elem);
-    }
-
     render(){
         if(this.props.see.type=="web"){
             return (
-                React.createElement("div", {class: "TL-item", ref:  div => { this.element = div }}, 
+                React.createElement("div", {class: "TL-item"}, 
                   React.createElement("div", {class: "webinfo-component", 
                     onMouseOver: this.onMouseOver, 
                     onMouseOut: this.onMouseOut}, 
@@ -75,7 +69,7 @@ export default class TLItem extends React.Component {
                     style: {display: this.state.displayX}, 
                     onMouseOver: this.onMouseOver, 
                     onMouseOut: this.onMouseOut, 
-                    onClick: this.onDelete.bind(this, this.props.see.url)}, 
+                    onClick: e => del_seelater(this.props.see.url)}, 
                     React.createElement("img", {src: "../../img/x.svg"})
                   )
                 )

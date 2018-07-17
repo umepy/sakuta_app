@@ -51,10 +51,16 @@ export default class TLItem extends React.Component {
       })
     }
 
+    onDelete(url){
+      del_seelater(url)
+      let elem = this.element
+      elem.parentNode.removeChild(elem);
+    }
+
     render(){
         if(this.props.see.type=="web"){
             return (
-                <div class="TL-item">
+                <div class="TL-item" ref={ div => { this.element = div }}>
                   <div class="webinfo-component"
                     onMouseOver={this.onMouseOver}
                     onMouseOut={this.onMouseOut}>
@@ -68,7 +74,8 @@ export default class TLItem extends React.Component {
                   <div class="X-button"
                     style={{display: this.state.displayX}}
                     onMouseOver={this.onMouseOver}
-                    onMouseOut={this.onMouseOut}>
+                    onMouseOut={this.onMouseOut}
+                    onClick={this.onDelete.bind(this, this.props.see.url)}>
                     <img src="../../img/x.svg"/>
                   </div>
                 </div>

@@ -54,7 +54,7 @@ export default class TLItem extends React.Component {
     onDelete(url){
       del_seelater(url)
       let elem = this.element
-      elem.parentNode.removeChild(elem);
+      console.log(ReactDOM.unmountComponentAtNode(this));
     }
 
     render(){
