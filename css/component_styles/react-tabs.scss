@@ -9,6 +9,7 @@
   display: inline-block;
   text-decoration: none;
   color: #668ad8;
+  margin: 0 10px 0 10px;
   width: 30px;
   height: 30px;
   line-height: 40px;
@@ -27,7 +28,7 @@
 }
 
 .react-tabs__tab--selected {
-  background: #fff;
+  background: #aaa;
   border-color: #aaa;
   color: black;
   //border-radius: 5px 5px 0 0;

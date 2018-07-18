@@ -189,6 +189,7 @@ Y軸はvhが基準
   display: inline-block;
   text-decoration: none;
   color: #668ad8;
+  margin: 0 10px 0 10px;
   width: 30px;
   height: 30px;
   line-height: 40px;
@@ -206,7 +207,7 @@ Y軸はvhが基準
   transform: rotateY(360deg); }
 
 .react-tabs__tab--selected {
-  background: #fff;
+  background: #aaa;
   border-color: #aaa;
   color: black; }
 
