@@ -4,10 +4,10 @@
     "description": "Make your browzing more comfortable with Intelli Tab!",
     "manifest_version": 2,
     "permissions": [
-        "<all_urls>", //all urls: http, https, and so on
+        "<all_urls>",
         "bookmarks",
         "background",
-        "storage", //file write and load. fileSystem api is not allowed in extensions.
+        "storage",
         "tabs",
         "history",
         "contextMenus"
