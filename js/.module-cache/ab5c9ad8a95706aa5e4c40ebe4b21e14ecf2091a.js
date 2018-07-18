@@ -22,27 +22,18 @@ export default class TLItem extends React.Component {
         //console.log(this.props.see.type)
 
         if(this.props.see.type=="web"){
-            if(typeof(url_data[this.props.see.url]) == 'object'){
-                var resp = url_data[this.props.see.url];
+            geturlinfoAsync(this.props.see.url)
+            .then((resp)=>{
+                url_data[this.props.see.url] = resp;
+                console.log(url_data)
+                console.log(url_data[this.props.see.url])
                 this.setState({
-                    title: resp.title,
-                    description:  resp.description,
-                    image: resp.image,
-                    url: this.props.see.url
+                title: resp.title,
+                description:  resp.description,
+                image: resp.image,
+                url: this.props.see.url
                 });
-            }
-            else{
-                geturlinfoAsync(this.props.see.url)
-                .then((resp)=>{
-                    url_data[this.props.see.url] = resp;
-                    this.setState({
-                    title: resp.title,
-                    description:  resp.description,
-                    image: resp.image,
-                    url: this.props.see.url
-                    });
-                })
-            }
+            })
          } else if(this.props.see.type=="memo")
             {
 
