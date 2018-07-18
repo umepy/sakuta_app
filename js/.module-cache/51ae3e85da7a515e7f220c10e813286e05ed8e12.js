@@ -52,51 +52,44 @@ export default class TLItem extends React.Component {
       })
     }
 
-    onDelete(url){
-      del_seelater(url)
-      let elem = this.element
-      elem.parentNode.removeChild(elem);
-    }
-
     render(){
         if(this.props.see.type=="web"){
             return (
-                <div class="TL-item" ref={ div => { this.element = div }}>
-                  <div class="webinfo-component"
-                    onMouseOver={this.onMouseOver}
-                    onMouseOut={this.onMouseOut}>
-                    <a href="" onClick={e => openNewTab(e,this.props.see.url)} >
-                        <span class="brand" style={{backgroundImage: "url(" + this.state.image + ")"}}></span>
-                        <div class="frontground">
-                            <div class="title">{this.state.title}</div>
-                        </div>
-                    </a>
-                  </div>
-                  <div class="X-button"
-                    style={{display: this.state.displayX}}
-                    onMouseOver={this.onMouseOver}
-                    onMouseOut={this.onMouseOut}
-                    onClick={this.onDelete.bind(this, this.props.see.url)}>
-                    <img src="../../img/x.svg"/>
-                  </div>
-                </div>
+                React.createElement("div", {class: "TL-item"}, 
+                  React.createElement("div", {class: "webinfo-component", 
+                    onMouseOver: this.onMouseOver, 
+                    onMouseOut: this.onMouseOut}, 
+                    React.createElement("a", {href: "", onClick: e => openNewTab(e,this.props.see.url)}, 
+                        React.createElement("span", {class: "brand", style: {backgroundImage: "url(" + this.state.image + ")"}}), 
+                        React.createElement("div", {class: "frontground"}, 
+                            React.createElement("div", {class: "title"}, this.state.title)
+                        )
+                    )
+                  ), 
+                  React.createElement("div", {class: "X-button", 
+                    style: {display: this.state.displayX}, 
+                    onMouseOver: this.onMouseOver, 
+                    onMouseOut: this.onMouseOut}, 
+                    React.createElement("img", {src: "../../img/x.svg"})
+                  )
+                )
             )
         }
        else if (this.props.see.type=="memo"){
             return (
-                <div class="memo-component" style={{width: '100%'}}>
-                {/* <a href="" onClick={e => openNewTab(e,this.props.url)} > クリックしたら編集したり窓空いたりする仕掛け欲しいTODO */}
-                    <span class="brand" ></span>
-                    <span class="title">{this.state.title}</span>
-                    <span class="description">{this.state.description}</span>
-                    <span class="url"><a>{this.state.datetime}</a></span>
-                </div>
+                React.createElement("div", {class: "memo-component", style: {width: '100%'}}, 
+                /* <a href="" onClick={e => openNewTab(e,this.props.url)} > クリックしたら編集したり窓空いたりする仕掛け欲しいTODO */
+                    React.createElement("span", {class: "brand"}), 
+                    React.createElement("span", {class: "title"}, this.state.title), 
+                    React.createElement("span", {class: "description"}, this.state.description), 
+                    React.createElement("span", {class: "url"}, React.createElement("a", null, this.state.datetime))
+                )
             )
         }
         else //何かが必ずreturnする形にしなければエラーになる
         {
             return(
-                <div> </div>
+                React.createElement("div", null, " ")
             )
             console.log("error: undefined type:"+ this.props.see.type)
         }
