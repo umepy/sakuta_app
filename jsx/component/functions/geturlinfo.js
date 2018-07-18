@@ -93,7 +93,8 @@ function get_data(url, atitle, aimage, adescription){
             .then((responseText) => {
                 var title = atitle
                     || $(responseText).filter("meta[property='og:title']").attr('content')
-                    || responseText.match(/<title>([^<]*)<\/title>/i).pop()
+                    || $(responseText).filter("meta[property='title']").attr('content')
+                try{title = title || responseText.match(/<title>([^<]*)<\/title>/i).pop()}catch(e){}
                 var description = adescription
                 var image = aimage
                     || $(responseText).filter("meta[property='og:image']").attr('content')
