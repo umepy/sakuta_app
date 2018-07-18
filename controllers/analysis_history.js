@@ -1,4 +1,7 @@
 // 過去の閲覧履歴を分析する関数
+// 特定のサイトが上位に表示されないようにするブラックリスト
+var BLACK_LIST = ['www.google.co.jp',
+                    'www.google.com']
 
 // 閲覧履歴数の集積
 function get_history(){
@@ -212,30 +215,57 @@ function get_hist(query){
 
 // 上位のサイトのTOP20くらいまで数えて更新する関数
 function update_top_site(){
-    chrome.storage.local.get('history_data', function (data) {
-        let result = {0:[], 1:[], 2:[], 3:[]}
-        if (typeof data.history_data !== 'undefined') {
-            for(let i in [0,1,2,3]){
-                if(data.history_data[i] !== {}){
-                    for(let j in data.history_data[i]){
-                        result[i][result[i].length] = {url:j, visit:data.history_data[i][j], type:'web', _id:'test'}
-                    }
-                }
-                result[i].sort((a,b)=>{
-                    if(a.visit > b.visit) return -1;
-                    if(a.visit < b.visit) return 1;
-                    return 0;
-                })
-                if(result[i].length > 20){
-                    result[i].splice(20, result[i].length)
-                }
+    let rt_object = {bookmarks:[], len_of_bar:0};
+    chrome.bookmarks.getTree(function (nodes) {
+        root = nodes[0].children;
+        for (i = 0; i < root.length; i++) {
+            if (root[i].title === "ブックマーク バー") {
+                bookmark_bar = root[i];
             }
-
-            chrome.storage.local.set({history_top: result}, function () {
-                console.log('Saved History Top');
-            });
+            if (root[i].title === "その他のブックマーク") {
+                other_bookmark = root[i];
+            }
         }
-    });
+        rt_object.len_of_bar = bookmark_bar.children.length;
+        for (i = 0; i < bookmark_bar.children.length; i++) {
+            dom = bookmark_bar.children[i].url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/);
+            if(dom !== null) rt_object.bookmarks[rt_object.bookmarks.length] = dom[1];
+        }
+        chrome.storage.local.get('history_data', function (data) {
+            let result = {0:[], 1:[], 2:[], 3:[]};
+            let result_dom = {0:BLACK_LIST.concat(rt_object.bookmarks), 1:BLACK_LIST.concat(rt_object.bookmarks), 2:BLACK_LIST.concat(rt_object.bookmarks), 3:BLACK_LIST.concat(rt_object.bookmarks)};
+            if (typeof data.history_data !== 'undefined') {
+                for(let i in [0,1,2,3]){
+                    if(data.history_data[i] !== {}){
+                        for(let j in data.history_data[i]){
+                            result[i][result[i].length] = {url:j, visit:data.history_data[i][j], type:'web', _id:'test'}
+                        }
+                    }
+                    result[i].sort((a,b)=>{
+                        if(a.visit > b.visit) return -1;
+                        if(a.visit < b.visit) return 1;
+                        return 0;
+                    })
+                    if(result[i].length > 100){
+                        result[i].splice(100, result[i].length)
+                    }
+                    let tmp_result = []
+                    for(let j=0; j<result[i].length; j++){
+                        domain = result[i][j].url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/);
+                        if(domain !== null && result_dom[i].indexOf(domain[1]) === -1){
+                            tmp_result.push(result[i][j]);
+                            result_dom[i].push(domain[1])
+                        }
+                    }
+                    result[i]=tmp_result
+                }
+
+                chrome.storage.local.set({history_top: result}, function () {
+                    console.log('Saved History Top');
+                });
+            }
+        });
+    })
 }
 
 // 時間帯おすすめページを取得する関数
