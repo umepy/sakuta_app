@@ -28,34 +28,39 @@ export default class Timeline extends React.Component {
           this.setState({sees: data});
       });
       //TODO:ここをタブのやつに変更する
-      get_auto_remove().then(data =>{
+      get_seelater().then(data =>{
           this.setState({removeTabs: data});
       });
   }
 
   render(){
     var list = this.state.sees
-    var rmlist=this.state.removeTabs
+    var rmlist=this.state.sees
 
 
     return (
       React.createElement("div", {id: "timeLine"}, "  ", /** こっちはタイムラインの外枠組みのdiv */
 
       React.createElement(Tabs, null, 
-        React.createElement(TabList, null, 
-          React.createElement(Tab, null), 
-          React.createElement(Tab, null)
-        ), 
-        React.createElement(TabPanel, null, 
-          React.createElement(TLContainer, null, 
-            React.createElement(TLList, {seeList: list.slice().reverse()})
-          )
-        ), 
-        React.createElement(TabPanel, null, 
-          React.createElement(TLContainer, null, 
-            React.createElement(TLList, {seeList: rmlist.slice().reverse()})
-          )
-        )
+            React.createElement(TabList, null, 
+              React.createElement(Tab, null, "後で見る"), 
+              React.createElement(Tab, null, "削除タブ"), 
+              React.createElement(Tab, null, "メモ")
+            ), 
+            React.createElement(TabPanel, null, 
+              React.createElement(TLContainer, null, 
+                React.createElement(TLList, {seeList: list.slice().reverse()})
+              )
+            ), 
+            React.createElement(TabPanel, null, 
+              React.createElement(TLContainer, null, 
+                React.createElement(TLList, {seeList: rmlist.slice().reverse()})
+              )
+            ), 
+            React.createElement(TabPanel, null, 
+            React.createElement(TLContainer, null
+            )
+            )
 
       )
         /*<PanelContainer>
