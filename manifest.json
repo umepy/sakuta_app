@@ -1,7 +1,7 @@
 {
-    "name": "Sakuta_App",
+    "name": "Intelli Tab",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "Make your browzing more comfortable with Intelli Tab!",
     "manifest_version": 2,
     "permissions": [
         "<all_urls>", //all urls: http, https, and so on
