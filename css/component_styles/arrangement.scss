@@ -6,7 +6,7 @@ Y軸はvhが基準
 
 //メニュー
 $menuTop: 5vh;
-$menuLeft: 2.5vw;
+$menuLeft: 3vw;
 $menuRightMargin: 2.5vw;
 
 $menuSearchWindowTop: $menuTop;
@@ -16,7 +16,7 @@ $searchWindowHeight: 20vh;
 // タイムライン
 $timeLineRight: $menuLeft;
 $timeLineTop: 30vh;
-$timeLineWidth: 50vw;
+$timeLineWidth: 45vw;
 $timeLineHeight: 100vh - 2 * $menuTop;
 
 $tlListWidth: $timeLineWidth - 2;
@@ -30,7 +30,7 @@ $tlListHeight: 100%;
   position: fixed;
   top: $timeLineTop;
   left: $menuLeft;
-  width: calc( 100vw - #{$timeLineWidth} - #{$menuLeft} * 2 - #{$menuRightMargin});
+  width: $timeLineWidth;
 }
 // 検索窓
 #searchWindow{
@@ -70,4 +70,5 @@ $tlListHeight: 100%;
   margin: 0 auto;
   display: block;
   flex-wrap: wrap;
+  text-align: justify;
 }
