@@ -42,20 +42,25 @@ export default class Timeline extends React.Component {
       React.createElement("div", {id: "timeLine"}, "  ", /** こっちはタイムラインの外枠組みのdiv */
 
       React.createElement(Tabs, null, 
-        React.createElement(TabList, null, 
-          React.createElement(Tab, null), 
-          React.createElement(Tab, null)
-        ), 
-        React.createElement(TabPanel, null, 
-          React.createElement(TLContainer, null, 
-            React.createElement(TLList, {seeList: list.slice().reverse()})
-          )
-        ), 
-        React.createElement(TabPanel, null, 
-          React.createElement(TLContainer, null, 
-            React.createElement(TLList, {seeList: rmlist.slice().reverse()})
-          )
-        )
+            React.createElement(TabList, null, 
+              React.createElement(Tab, null, "後で見る"), 
+              React.createElement(Tab, null, "削除タブ"), 
+              React.createElement(Tab, null, "メモ")
+            ), 
+            React.createElement(TabPanel, null, 
+              React.createElement(TLContainer, null, 
+                React.createElement(TLList, {seeList: list.slice().reverse()})
+              )
+            ), 
+            React.createElement(TabPanel, null, 
+              React.createElement(TLContainer, null, 
+                React.createElement(TLList, {seeList: rmlist.slice().reverse()})
+              )
+            ), 
+            React.createElement(TabPanel, null, 
+            React.createElement(TLContainer, null
+            )
+            )
 
       )
         /*<PanelContainer>

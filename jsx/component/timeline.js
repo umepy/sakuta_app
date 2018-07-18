@@ -42,25 +42,20 @@ export default class Timeline extends React.Component {
       <div id="timeLine">  {/** こっちはタイムラインの外枠組みのdiv */}
 
       <Tabs>
-            <TabList>
-              <Tab>後で見る</Tab>
-              <Tab>削除タブ</Tab>
-              <Tab>メモ</Tab>
-            </TabList>
-            <TabPanel>
-              <TLContainer>
-                <TLList seeList={list.slice().reverse()} />
-              </TLContainer>
-            </TabPanel>
-            <TabPanel>
-              <TLContainer>
-                <TLList seeList={rmlist.slice().reverse()} />
-              </TLContainer>
-            </TabPanel>
-            <TabPanel>
-            <TLContainer>
-            </TLContainer>
-            </TabPanel>
+        <TabList>
+          <Tab></Tab>
+          <Tab></Tab>
+        </TabList>
+        <TabPanel>
+          <TLContainer>
+            <TLList seeList={list.slice().reverse()} />
+          </TLContainer>
+        </TabPanel>
+        <TabPanel>
+          <TLContainer>
+            <TLList seeList={rmlist.slice().reverse()} />
+          </TLContainer>
+        </TabPanel>
 
       </Tabs>
         { /*<PanelContainer>
