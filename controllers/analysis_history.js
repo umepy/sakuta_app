@@ -125,7 +125,7 @@ function manage_bookmark_by_number(){
 function get_history_detail(){
     let time_split = 4; // 1日の分割数、デフォルトは4
     let splited_time = 24 / time_split; // 単位時間
-    let search_limit = 200; // 検索時間の上限、デフォルトは1月(5040)
+    let search_limit = 5040; // 検索時間の上限、デフォルトは1月(5040)
     let unit_time = 24 * 60 * 60 * 1000 / time_split; // 1unitの時間
     let now_time = new Date(); // 現在時刻
     let start_time, end_time; //検索時の範囲指定用の時刻
