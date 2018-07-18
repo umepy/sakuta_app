@@ -34,8 +34,8 @@ export default class Timeline extends React.Component {
   }
 
   render(){
-    var list = this.state.sees
-    var rmlist=this.state.removeTabs
+    var list = this.state.sees;
+    var rmlist=this.state.removeTabs;
 
 
     return (

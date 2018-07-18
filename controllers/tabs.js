@@ -19,7 +19,6 @@ chrome.tabs.onActivated.addListener((tab)=>{
 
 chrome.tabs.onUpdated.addListener((id,info,tab)=>{
     if(info.status === "complete"){
-        console.log(JSON.stringify(tabs))
         if(tabs !== []) {
             tabs_update(tab);
             tabs_data[tab.id] = tab;
