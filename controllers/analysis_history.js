@@ -180,7 +180,7 @@ function get_history_detail(){
         for(let i=0; i<result.length; i++){
             if(result[i]!=={}) {
                 for (url in result[i]) {
-                    let new_url = url.slice(0,url.indexOf('?'))
+                    if(url.indexOf('?') !== -1) let new_url = url.slice(0,url.indexOf('?'));
                     if (history_log[result[i][url].kubun][new_url]) history_log[result[i][url].kubun][new_url] += 1;
                     else {
                         history_log[result[i][url].kubun][new_url] = 1;
