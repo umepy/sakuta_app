@@ -13,7 +13,9 @@ chrome.runtime.onMessage.addListener(
             var img = request.data[1];
             var url = request.data[2];
             //console.log(img)
-            capture_shot(title, img, url);
+            chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+                if(url == tabs[0].url) capture_shot(title, img, url);
+            });
         }
         return true;
     }

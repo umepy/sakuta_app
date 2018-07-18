@@ -9,7 +9,7 @@ html {
 
 body {
   height: 100vh;
-  background-image: url(../img/star.png);
+  background-image: url(../img/mountain.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,8 +26,8 @@ Y軸はvhが基準
 #menu {
   position: fixed;
   top: 30vh;
-  left: 2.5vw;
-  width: calc( 100vw - 50vw - 2.5vw * 2 - 2.5vw); }
+  left: 3vw;
+  width: 45vw; }
 
 #searchWindow {
   margin: auto;
@@ -41,13 +41,13 @@ Y軸はvhが基準
 
 #timeLine {
   position: fixed;
-  right: 2.5vw;
+  right: 3vw;
   top: 30vh;
-  width: 50vw; }
+  width: 45vw; }
 
 #tl-container {
   position: fixed;
-  width: 50vw;
+  width: 45vw;
   height: 60%;
   overflow-x: hidden; }
 
@@ -57,18 +57,19 @@ Y軸はvhが基準
   overflow-y: scroll;
   margin: 0 auto;
   display: block;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  text-align: justify; }
 
 .TL-item {
   width: 200px;
-  height: 140px;
+  height: 160px;
   display: inline-block;
   margin-top: 10px; }
 
 .webinfo-component {
   border-radius: 5px;
   width: 182px;
-  height: 128px;
+  height: 148px;
   display: inline-block;
   vertical-align: middle;
   font-size: 12px;
@@ -76,12 +77,34 @@ Y軸はvhが基準
   margin: 10px; }
   .webinfo-component .brand {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 20px);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
+    bottom: 0;
     z-index: 0; }
+  .webinfo-component .title {
+    z-index: 2;
+    width: 100%;
+    height: 20px;
+    white-space: nowrap;
+    background: -webkit-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(to bottom, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    position: relative;
+    padding-top: 1px;
+    color: #FFF;
+    font-weight: bold;
+    border-radius: 4px;
+    /*角の丸み*/
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000; }
   .webinfo-component .frontground {
     background: -webkit-linear-gradient(top, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
     background: linear-gradient(to bottom, rgba(29, 176, 237, 0.2) 0, rgba(0, 0, 0, 0.3) 100%);
@@ -92,22 +115,6 @@ Y軸はvhが基準
     height: 100%;
     position: relative;
     z-index: 10; }
-    .webinfo-component .frontground .title {
-      z-index: 2;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      -o-text-overflow: ellipsis;
-      text-overflow: ellipsis;
-      word-wrap: normal;
-      position: relative;
-      padding-top: 15%;
-      color: #FFF;
-      font-weight: bold;
-      padding-left: 10px;
-      padding-right: 10px;
-      display: block;
-      text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000; }
   .webinfo-component .frontground:hover {
     filter: alpha(opacity=80);
     -moz-opacity: 0.8;

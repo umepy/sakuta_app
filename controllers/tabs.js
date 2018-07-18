@@ -89,7 +89,7 @@ function tabs_remove(del_id){
 }
 
 function get_auto_remove(){
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         chrome.storage.local.get('auto_remove', (item) =>{
             item['auto_remove'] ? resolve(item['auto_remove']):reject([]);
         });
