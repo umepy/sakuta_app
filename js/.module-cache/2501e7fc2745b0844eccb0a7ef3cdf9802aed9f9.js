@@ -88,7 +88,7 @@ const geturlinfoAsync =(url)=> {
 function get_data(url, atitle, aimage, adescription){
     return new Promise(
         function(resolve, reject) {
-            if(!url.indexOf("http") || !url.indexOf("https") ){
+            try{
                 fetch(url)
                 .then((response)=> response.text())
                 .then((responseText) => {
@@ -110,9 +110,8 @@ function get_data(url, atitle, aimage, adescription){
 
                 })
             }
-            else{
-                var title, image, description;
-                resolve(make_resp(url, title, image, description))
+            catch(e){
+                resolve(make_resp(url, 'undefined', 'undefined', 'undefined'))
             }
         }
     )

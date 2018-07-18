@@ -111,8 +111,7 @@ function get_data(url, atitle, aimage, adescription){
                 })
             }
             else{
-                var title, image, description;
-                resolve(make_resp(url, title, image, description))
+                resolve(make_resp(url, 'undefined', 'undefined', 'undefined'))
             }
         }
     )

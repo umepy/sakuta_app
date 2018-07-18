@@ -88,26 +88,32 @@ const geturlinfoAsync =(url)=> {
 function get_data(url, atitle, aimage, adescription){
     return new Promise(
         function(resolve, reject) {
-            fetch(url)
-            .then((response)=> response.text())
-            .then((responseText) => {
-                var title = atitle
-                    || $(responseText).filter("meta[property='og:title']").attr('content')
-                    || $(responseText).filter("meta[property='title']").attr('content')
-                try{title = title || responseText.match(/<title>([^<]*)<\/title>/i).pop()}catch(e){}
-                var description = adescription
-                var image = aimage
-                    || $(responseText).filter("meta[property='og:image']").attr('content')
+            if(!url.indexOf("http") || !url.indexOf("https") ){
+                fetch(url)
+                .then((response)=> response.text())
+                .then((responseText) => {
+                    var title = atitle
+                        || $(responseText).filter("meta[property='og:title']").attr('content')
+                        || $(responseText).filter("meta[property='title']").attr('content')
+                    try{title = title || responseText.match(/<title>([^<]*)<\/title>/i).pop()}catch(e){}
+                    var description = adescription
+                    var image = aimage
+                        || $(responseText).filter("meta[property='og:image']").attr('content')
 
-                if(typeof atitle === 'undefined' || typeof aimage === 'undefined'){
-                    store_data(url, title, image, description)
-                    resolve(make_resp(url, title, image, description))
-                }
-                else{
-                    resolve(make_resp(url, title, image, description))
-                }
+                    if(typeof atitle === 'undefined' || typeof aimage === 'undefined'){
+                        store_data(url, title, image, description)
+                        resolve(make_resp(url, title, image, description))
+                    }
+                    else{
+                        resolve(make_resp(url, title, image, description))
+                    }
 
-            })
+                })
+            }
+            else{
+                var title, image, description;
+                resolve(make_resp(url, title, image, description))
+            }
         }
     )
 }

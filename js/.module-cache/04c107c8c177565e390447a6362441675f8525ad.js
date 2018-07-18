@@ -69,7 +69,6 @@ export default class TLItem extends React.Component {
       if(this.props.flag == "see_later"){del_seelater(url)}
       if(this.props.flag == "auto_remove"){del_auto_remove(url)}
       console.log(this)
-      console.log(this.props.flag)
       let elem = this.element
       elem.parentNode.removeChild(elem);
     }

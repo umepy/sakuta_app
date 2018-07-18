@@ -95,3 +95,26 @@ function get_auto_remove(){
         });
     })
 }
+
+// 後で見るの削除関数、引数は削除するページのurl
+function del_auto_remove(url){
+    chrome.storage.local.get('auto_remove', function (data) {
+        if (typeof data.auto_remove !== 'undefined') {
+            let flag = false;
+            let index = 0;
+            let i = 0;
+            for (; i< data.auto_remove.length; i++){
+                if (url == data.auto_remove[i].url){
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
+                data.auto_remove.splice(i,1);
+                chrome.storage.local.set({auto_remove: data.auto_remove}, function () {
+                    console.log('delete_auto_remove');
+                });
+            }
+        }
+    });
+}
