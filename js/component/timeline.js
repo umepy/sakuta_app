@@ -28,14 +28,14 @@ export default class Timeline extends React.Component {
           this.setState({sees: data});
       });
       //TODO:ここをタブのやつに変更する
-      get_seelater().then(data =>{
+      get_auto_remove().then(data =>{
           this.setState({removeTabs: data});
       });
   }
 
   render(){
     var list = this.state.sees
-    var rmlist=this.state.sees
+    var rmlist=this.state.removeTabs
 
 
     return (

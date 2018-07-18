@@ -18,7 +18,8 @@
             "controllers/startup.js",
             "controllers/right_click_menu.js",
             "controllers/images/capture_shot.js",
-            "controllers/analysis_history.js"
+            "controllers/analysis_history.js",
+            "controllers/tabs.js"
         ],
         "persistent": false
     },
