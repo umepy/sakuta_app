@@ -47,8 +47,8 @@ export default class Timeline extends React.Component {
 
       React.createElement(Tabs, null, 
         React.createElement(TabList, null, 
-          React.createElement(Tab, null, "★"), 
-          React.createElement(Tab, null, "♻︎")
+          React.createElement(Tab, null), 
+          React.createElement(Tab, null)
         ), 
         React.createElement(TabPanel, null, 
           React.createElement(TLContainer, null, 

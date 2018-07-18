@@ -199,24 +199,22 @@ Y軸はvhが基準
   margin: 0 10px 0 10px;
   width: 30px;
   height: 30px;
-  line-height: 40px;
+  font-size: 14px;
   border-radius: 50%;
   border: double 4px #668ad8;
   text-align: center;
   vertical-align: middle;
   overflow: hidden;
-  transition: .6s;
+  transition: all .6s;
   cursor: pointer; }
 
 .react-tabs__tab:hover {
-  -webkit-transform: rotateY(360deg);
-  -ms-transform: rotateY(360deg);
-  transform: rotateY(360deg); }
+  transform: scale(1.4, 1.4) rotate(150deg); }
 
 .react-tabs__tab--selected {
-  background: #aaa;
-  border-color: #aaa;
-  color: black; }
+  transform: scale(1.4, 1.4) rotate(150deg);
+  border-color: blue;
+  color: blue; }
 
 .react-tabs__tab--disabled {
   color: GrayText;

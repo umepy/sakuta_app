@@ -47,8 +47,8 @@ export default class Timeline extends React.Component {
 
       <Tabs>
         <TabList>
-          <Tab></Tab>
-          <Tab></Tab>
+          <Tab>★</Tab>
+          <Tab>♻︎</Tab>
         </TabList>
         <TabPanel>
           <TLContainer>
