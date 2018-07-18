@@ -24,13 +24,17 @@ export default class Timeline extends React.Component {
   }
 
   componentWillMount() {
-      get_seelater().then(data => {
+      get_seelater()
+          .then(data => {
           this.setState({sees: data});
+      }).catch(data =>{
+          this.setState({sees: []});
       });
-      //TODO:ここをタブのやつに変更する
       get_auto_remove().then(data =>{
           this.setState({removeTabs: data});
-      });
+      }).catch(data =>{
+          this.setState({removeTabs: []});
+      });;
   }
 
   render(){
