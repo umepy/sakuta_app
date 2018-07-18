@@ -28,6 +28,7 @@
             "js": ["controllers/images/get_capture_event.js"]
         }
     ],
+    "icons":{"16":"img/icon_16.png", "48":"img/icon_16.png", "128":"img/icon_128.png"},
     "content_security_policy": " script-src 'self' 'sha256-VePmQi2Ey76e61vq8bYfhTPpa3kR3k0fkLS2r0oGWPQ='; object-src 'self'"
 }
 
