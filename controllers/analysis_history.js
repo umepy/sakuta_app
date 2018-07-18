@@ -6,7 +6,7 @@ function get_history(){
     // test: 検索時の文字列、空で全取得
     // startTime: どれくらい前の履歴までさかのぼるか（mili sec）、epoch時間なので現時刻 - 目的時間で計算、hoursで何時間前まで取得するか指定
     // maxResults: 最大の検索数
-    const hours = 168; // 168 hours:a week, 5040 hours:a month
+    const hours = 24; // 168 hours:a week, 5040 hours:a month
     let query = {
         text:'',
         startTime:new Date().getTime() - hours * 60 * 60 * 1000,
