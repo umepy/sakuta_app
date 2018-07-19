@@ -226,10 +226,11 @@ function update_top_site(){
                 other_bookmark = root[i];
             }
         }
-        rt_object.len_of_bar = bookmark_bar.children.length;
-        for (i = 0; i < bookmark_bar.children.length; i++) {
-            dom = bookmark_bar.children[i].url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/);
-            if(dom !== null) rt_object.bookmarks[rt_object.bookmarks.length] = dom[1];
+        if(rt_object.bookmarks === []){
+            for (i = 0; i < bookmark_bar.children.length; i++) {
+                dom = bookmark_bar.children[i].url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/);
+                if(dom !== null) rt_object.bookmarks[rt_object.bookmarks.length] = dom[1];
+            }
         }
         chrome.storage.local.get('history_data', function (data) {
             let result = {0:[], 1:[], 2:[], 3:[]};
