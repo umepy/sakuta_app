@@ -21,7 +21,7 @@ export default class TLItem extends React.Component {
 
     componentWillMount(){
         //console.log(this.props.see.type)
-        console.log(delete_data)
+        //console.log(delete_data)
         if(this.props.see.type=="web"){
             if(typeof(url_data[this.props.see.url]) == 'object'){
                 var resp = url_data[this.props.see.url];
@@ -75,7 +75,7 @@ export default class TLItem extends React.Component {
     }
 
     render(){
-        console.log(delete_data)
+        //console.log(delete_data)
         if(this.props.see.type=="web"
             && delete_data[this.props.flag].indexOf(this.props.see.url) == -1
             && this.state.title != null && typeof this.state.title !== 'undefined'){
