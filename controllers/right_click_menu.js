@@ -71,8 +71,6 @@ function get_capture(title, url){
     )
 }
 
-get_seelater().then((data)=>console.log(data))
-
 
 //background.jsからbackground.jsにメッセージが届かなかったので
 //仕方ないから、capture_shotと同じスクリプトを貼って対応。悲しみ
