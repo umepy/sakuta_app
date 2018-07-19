@@ -2,6 +2,7 @@ import geturlinfoAsync from './functions/geturlinfo.js'
 import openNewTab from './functions/openNewTab.js'
 
 var url_data = {};
+var delete_data = {"see_later": [], "auto_remove": []}
 
 export default class TLItem extends React.Component {
     constructor(){
@@ -20,7 +21,7 @@ export default class TLItem extends React.Component {
 
     componentWillMount(){
         //console.log(this.props.see.type)
-
+        //console.log(delete_data)
         if(this.props.see.type=="web"){
             if(typeof(url_data[this.props.see.url]) == 'object'){
                 var resp = url_data[this.props.see.url];
@@ -68,14 +69,16 @@ export default class TLItem extends React.Component {
     onDelete(url){
       if(this.props.flag == "see_later"){del_seelater(url)}
       if(this.props.flag == "auto_remove"){del_auto_remove(url)}
-      console.log(this)
-      console.log(this.props.flag)
+      delete_data[this.props.flag].push(url)
       let elem = this.element
       elem.parentNode.removeChild(elem);
     }
 
     render(){
-        if(this.props.see.type=="web"){
+        //console.log(delete_data)
+        if(this.props.see.type=="web"
+            && delete_data[this.props.flag].indexOf(this.props.see.url) == -1
+            && this.state.title != null && typeof this.state.title !== 'undefined'){
             return (
                 React.createElement("div", {class: "TL-item", ref:  div => { this.element = div }}, 
                   React.createElement("div", {class: "webinfo-component", 

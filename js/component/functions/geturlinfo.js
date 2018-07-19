@@ -76,7 +76,6 @@ const geturlinfoAsync =(url)=> {
                 try{ title = value[url][0]} catch(e){}
                 try{ image = value[url][1]} catch(e){}
                 try{ description = value[url][2]} catch(e){}
-                console.log(title)
                 if(title == null) title = undefined
                 if(image == null || image == 400) image = undefined
                 resolve(get_data(url, title, image, description))
@@ -92,11 +91,7 @@ function get_data(url, atitle, aimage, adescription){
             if(!url.indexOf("http") || !url.indexOf("https") ){
 
                 fetch(url)
-                .then((response)=>
-                {
-                    console.log(response)
-                    return response.text()
-                })
+                .then((response)=> response.text())
                 .then((responseText) => {
                     var title = atitle
                         || $(responseText).filter("meta[property='og:title']").attr('content')
