@@ -76,6 +76,7 @@ const geturlinfoAsync =(url)=> {
                 try{ title = value[url][0]} catch(e){}
                 try{ image = value[url][1]} catch(e){}
                 try{ description = value[url][2]} catch(e){}
+                console.log(title)
                 if(title == null) title = undefined
                 if(image == null || image == 400) image = undefined
                 resolve(get_data(url, title, image, description))
@@ -89,8 +90,13 @@ function get_data(url, atitle, aimage, adescription){
     return new Promise(
         function(resolve, reject) {
             if(!url.indexOf("http") || !url.indexOf("https") ){
+
                 fetch(url)
-                .then((response)=> response.text())
+                .then((response)=>
+                {
+                    console.log(response)
+                    return response.text()
+                })
                 .then((responseText) => {
                     var title = atitle
                         || $(responseText).filter("meta[property='og:title']").attr('content')
@@ -109,10 +115,12 @@ function get_data(url, atitle, aimage, adescription){
                     }
 
                 })
+                .catch(error => {
+                    resolve(make_resp(url, atitle, aimage, adescription))
+                })
             }
             else{
-                var title, image, description;
-                resolve(make_resp(url, title, image, description))
+                resolve(make_resp(url, atitle, aimage, adescription))
             }
         }
     )
